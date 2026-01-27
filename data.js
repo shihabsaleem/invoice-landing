@@ -1,7 +1,7 @@
 const landingPageData = {
     navbar: {
         logo: "assets/icon-48.png",
-        brandName: "Invoice by jadbery",
+        brandName: "",
         links: [
             { text: "Features", href: "#features" },
             { text: "How it Works", href: "#how-it-works" },
@@ -69,9 +69,9 @@ const landingPageData = {
         ctaLink: "https://chrome.google.com/webstore",
         copyright: "&copy; 2026 Invoice by jadbery. All rights reserved.",
         links: [
-            { text: "Privacy Policy", href: "#" },
-            { text: "Terms of Service", href: "#" },
-            { text: "Support", href: "#" }
+            { text: "Privacy Policy", href: "privacy.html" },
+            { text: "Terms of Service", href: "terms.html" },
+            { text: "Support", href: "mailto:support@jadbery.com" }
         ]
     }
 };
