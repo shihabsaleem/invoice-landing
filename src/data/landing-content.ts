@@ -10,7 +10,7 @@ export const landingPageData = {
         ctaText: "Create Invoice Now",
         ctaLink: "/generator",
         chromeCtaText: "Chrome Extension",
-        chromeCtaLink: "https://chrome.google.com/webstore"
+        chromeCtaLink: "https://chromewebstore.google.com/detail/invoice-by-jadbery/fcdjehhdacfdkflfjapeoagfddedjgaj"
     },
     hero: {
         badgeText: "100% Free & Offline-First",
@@ -23,7 +23,7 @@ export const landingPageData = {
         },
         secondaryCta: {
             text: "Chrome Extension",
-            link: "https://chrome.google.com/webstore"
+            link: "https://chromewebstore.google.com/detail/invoice-by-jadbery/fcdjehhdacfdkflfjapeoagfddedjgaj"
         },
         previewImage: "/assets/preview.jpg",
         previewBadge: "Generated in 0.5s",
@@ -80,7 +80,7 @@ export const landingPageData = {
         ctaText: "Create Invoice Now",
         ctaLink: "/generator",
         chromeCtaText: "Chrome Extension",
-        chromeCtaLink: "https://chrome.google.com/webstore",
+        chromeCtaLink: "https://chromewebstore.google.com/detail/invoice-by-jadbery/fcdjehhdacfdkflfjapeoagfddedjgaj",
         copyright: "© 2026 Invoice by jadbery. All rights reserved.",
         links: [
             { text: "Privacy Policy", href: "/privacy" },
