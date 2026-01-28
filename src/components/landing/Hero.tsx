@@ -56,9 +56,9 @@ export default function Hero() {
                 {/* Glow Effect */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-brand-500/10 blur-3xl rounded-full -z-10 pointer-events-none"></div>
 
-                <div className="relative rounded-2xl bg-white/60 backdrop-blur-xl border border-white/50 p-2 shadow-2xl ring-1 ring-white/40">
+                <div className="relative rounded-2xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl ring-1 ring-white/40 overflow-hidden">
                     {/* Window Header */}
-                    <div className="flex items-center gap-2 px-4 py-3 bg-white/50 border-b border-slate-100 rounded-t-xl mb-1">
+                    <div className="flex items-center gap-2 px-4 py-3 bg-white/50 border-b border-slate-100">
                         <div className="flex gap-2">
                             <div className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]"></div>
                             <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]"></div>
@@ -70,10 +70,8 @@ export default function Hero() {
                     </div>
 
                     {/* Window Content */}
-                    <div className="rounded-b-xl overflow-hidden bg-slate-50 aspect-[16/10] md:aspect-[21/9] relative group border border-slate-100">
-                        <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
-                            <img src={hero.previewImage} alt="Extension Interface" className="w-full h-full object-cover" />
-                        </div>
+                    <div className="rounded-b-xl overflow-hidden relative group">
+                        <img src={hero.previewImage} alt="Extension Interface" className="w-full h-auto block" />
 
                         {/* Floating Badge */}
                         <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-white/20 transform hover:-translate-y-1 transition-transform duration-300">

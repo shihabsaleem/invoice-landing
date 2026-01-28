@@ -51,7 +51,7 @@ export default function Testimonials() {
 
                     {/* Decorative Card - Call to Action within Grid */}
                     <div className="relative bg-gradient-to-br from-brand-600 to-brand-700 p-8 rounded-2xl shadow-xl shadow-brand-500/30 flex flex-col justify-center items-center text-center text-white overflow-hidden group">
-                        <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-20 transform scale-150 group-hover:scale-125 transition-transform duration-700"></div>
+                        <div className="absolute inset-0 opacity-20 transform scale-150 group-hover:scale-125 transition-transform duration-700"></div>
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold mb-2">{testimonials.ctaCard.title}</h3>
                             <p className="text-brand-100 mb-6">{testimonials.ctaCard.description}</p>
