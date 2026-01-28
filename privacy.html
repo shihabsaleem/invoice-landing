@@ -37,7 +37,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-3">
                     <a href="index.html" class="flex items-center gap-2">
-                        <img src="assets/logo.svg" alt="Logo" class="h-8 w-8">
+                        <img id="nav-logo" src="" alt="Logo" class="h-8 w-8">
                     </a>
                 </div>
                 <div>
@@ -52,67 +52,20 @@
     <!-- Main Content -->
     <main class="pt-32 pb-20">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
+            <h1 id="page-title" class="text-4xl font-bold text-slate-900 mb-8"></h1>
             <div class="prose prose-slate max-w-none">
                 <p class="text-lg text-slate-600 mb-8">
-                    Last updated: January 27, 2026
+                    Last updated: <span id="last-updated"></span>
                 </p>
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">1. Overview</h2>
-                    <p class="text-slate-600 mb-4">
-                        <strong>Invoice by jadbery</strong> is a 100% free, offline-first invoice generator designed for
-                        speed and professionalism. No sign-up required, no hidden fees, and your data stays on your
-                        device.
-                    </p>
-                    <p class="text-slate-600 font-medium">
-                        We value your privacy. This extension operates offline-first. We do not transmit or store your
-                        sensitive financial data on our servers.
-                    </p>
+                <div id="overview-container" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 mb-8">
+                    <h2 id="overview-title" class="text-2xl font-bold text-slate-900 mb-4"></h2>
+                    <p id="overview-content" class="text-slate-600 mb-4"></p>
                 </div>
 
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-8">2. Data Collection</h2>
-                <p class="text-slate-600 mb-4">
-                    Because our application runs entirely client-side (in your browser), we technically cannot see or
-                    collect the following:
-                </p>
-                <ul class="list-disc pl-5 space-y-2 text-slate-600 mb-6">
-                    <li>Your client lists or details.</li>
-                    <li>Invoice amounts, dates, or items.</li>
-                    <li>Your personal or business contact information.</li>
-                    <li>Payment details or banking information.</li>
-                </ul>
-
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-8">3. Data Storage</h2>
-                <p class="text-slate-600 mb-4">
-                    All your client data, company details, and invoice history are stored securely in your browser's
-                    <code>localStorage</code> or <code>indexedDB</code>.
-                </p>
-                <p class="text-slate-600 mb-4">
-                    If you uninstall the extension or clear your browser data, this local information may be deleted. We
-                    recommend downloading PDFs of your invoices for permanent records.
-                </p>
-
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-8">4. Third-Party Services</h2>
-                <p class="text-slate-600 mb-4">
-                    We use minimal third-party services to ensure the extension functions correctly:
-                </p>
-                <ul class="list-disc pl-5 space-y-2 text-slate-600 mb-6">
-                    <li><strong>Google Fonts</strong>: Used to load typography.</li>
-                    <li><strong>Chrome Web Store</strong>: Handles the distribution and updates of the extension.</li>
-                </ul>
-
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-8">5. Changes to This Policy</h2>
-                <p class="text-slate-600 mb-4">
-                    We may update our Privacy Policy from time to time. Thus, you are advised to review this page
-                    periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on
-                    this page.
-                </p>
-
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-8">6. Contact Us</h2>
-                <p class="text-slate-600 mb-4">
-                    If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.
-                </p>
+                <div id="sections-container">
+                    <!-- Sections will be injected here -->
+                </div>
             </div>
         </div>
     </main>
@@ -120,10 +73,45 @@
     <!-- Footer -->
     <footer class="bg-slate-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-400">&copy; 2026 Invoice by jadbery. All rights reserved.</p>
+            <p id="footer-copyright" class="text-slate-400"></p>
         </div>
     </footer>
 
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar
+            document.getElementById('nav-logo').src = landingPageData.navbar.logo;
+
+            // Page Content
+            const pageData = landingPageData.privacyPage;
+            document.title = `${pageData.title} - ${landingPageData.navbar.brandName}`;
+            document.getElementById('page-title').textContent = pageData.title;
+            document.getElementById('last-updated').textContent = pageData.lastUpdated;
+
+            // Overview
+            document.getElementById('overview-title').textContent = pageData.overview.title;
+            document.getElementById('overview-content').innerHTML = pageData.overview.content;
+
+            // Sections
+            const sectionsContainer = document.getElementById('sections-container');
+            pageData.sections.forEach(section => {
+                const title = document.createElement('h2');
+                title.className = "text-2xl font-bold text-slate-900 mb-4 mt-8";
+                title.textContent = section.title;
+
+                const content = document.createElement('div');
+                content.className = "text-slate-600 mb-4";
+                content.innerHTML = section.content;
+
+                sectionsContainer.appendChild(title);
+                sectionsContainer.appendChild(content);
+            });
+
+            // Footer
+            document.getElementById('footer-copyright').innerHTML = landingPageData.footer.copyright;
+        });
+    </script>
 </body>
 
 </html>
