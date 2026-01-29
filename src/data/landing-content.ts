@@ -15,7 +15,7 @@ export const landingPageData = {
     hero: {
         badgeText: "100% Free & Offline-First",
         title: "Professional Invoices <br /> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500'>Made Simple.</span>",
-        description: "Create beautiful, branded invoices, estimates, and quotes directly from your browser. No sign-up required. Data stays on your device.",
+        description: "The best Free Invoice Generator. Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required. Secure & Offline-first.",
         primaryCta: {
             text: "Create Invoice Now",
             link: "/generator",
@@ -27,7 +27,7 @@ export const landingPageData = {
         },
         previewImage: "/assets/preview.jpg",
         previewBadge: "Generated in 0.5s",
-        previewDomain: "invoice.jadbery.com"
+        previewDomain: "invoice.shihabsaleem.site"
     },
     features: {
         sectionTitle: "All the features you need",
@@ -44,7 +44,7 @@ export const landingPageData = {
                 iconColorClass: "bg-purple-100 text-purple-600",
                 iconName: "FileText",
                 title: "Multi-Format Support",
-                description: "Need a Quote? Or an Estimate? Switch document types instantly. We support Invoices, Receipts, and more."
+                description: "Need a Quote or Receipt Maker? Switch document types instantly. We support Invoices, Receipts, Estimates, and more."
             },
             {
                 iconColorClass: "bg-green-100 text-green-600",

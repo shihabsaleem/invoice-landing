@@ -7,6 +7,14 @@ export function useInvoice() {
     const [data, setData] = useState<InvoiceData>(DEFAULT_INVOICE);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Generate a safe ID even in non-secure contexts
+    const generateId = () => {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    };
+
     // Load from local storage on mount
     useEffect(() => {
         const saved = localStorage.getItem("invoice_draft");
@@ -14,6 +22,10 @@ export function useInvoice() {
             try {
                 const parsed = JSON.parse(saved);
                 // Merge with default to ensure structural integrity
+                // Ensure items is an array if it exists in parsed
+                if (parsed.items && !Array.isArray(parsed.items)) {
+                    parsed.items = DEFAULT_INVOICE.items;
+                }
                 setData((prev) => ({ ...prev, ...parsed }));
             } catch (e) {
                 console.error("Failed to load draft", e);
@@ -47,7 +59,7 @@ export function useInvoice() {
 
     const addItem = () => {
         const newItem: InvoiceItem = {
-            id: crypto.randomUUID(),
+            id: generateId(),
             desc: "",
             qty: 1,
             price: 0,

@@ -188,21 +188,29 @@ export default function InvoiceForm({ data, actions }: Props) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 gap-2 mb-2 px-1">
-                    <div className="col-span-6 md:col-span-7">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Item</span>
-                    </div>
-                    <div className="col-span-2">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</span>
-                    </div>
-                    <div className="col-span-2 md:col-span-2">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Price</span>
-                    </div>
-                    {data.config.enableTax && (
-                        <div className="col-span-1 md:col-span-1 text-right">
-                            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tax</span>
+                <div className="flex gap-2 mb-2 px-1">
+                    {/* Spacer for Grip */}
+                    <div className="w-4"></div>
+
+                    <div className="flex-1 grid grid-cols-12 gap-2">
+                        <div className={`${data.config.enableTax ? 'col-span-6 md:col-span-6' : 'col-span-8'}`}>
+                            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Item</span>
                         </div>
-                    )}
+                        <div className="col-span-2">
+                            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</span>
+                        </div>
+                        <div className="col-span-2">
+                            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Price</span>
+                        </div>
+                        {data.config.enableTax && (
+                            <div className="col-span-2 md:col-span-2">
+                                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tax</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Spacer for Trash to match button width (p-2 + w-5 = ~36px = w-9) */}
+                    <div className="w-9"></div>
                 </div>
 
                 <div className="space-y-3">
@@ -212,17 +220,17 @@ export default function InvoiceForm({ data, actions }: Props) {
                                 <GripHorizontal className="w-4 h-4" />
                             </div>
                             <div className="flex-1 grid grid-cols-12 gap-2">
-                                <div className="col-span-6 md:col-span-7">
+                                <div className={`${data.config.enableTax ? 'col-span-6 md:col-span-6' : 'col-span-8'}`}>
                                     <input className={`${inputClass}`} placeholder="Description" value={item.desc} onChange={(e) => actions.updateItem(item.id, "desc", e.target.value)} />
                                 </div>
                                 <div className="col-span-2">
                                     <input type="number" className={`${smallInputClass} w-full`} placeholder="0" value={item.qty} onChange={(e) => actions.updateItem(item.id, "qty", parseFloat(e.target.value))} />
                                 </div>
-                                <div className="col-span-2 md:col-span-2">
+                                <div className="col-span-2">
                                     <input type="number" className={`${smallInputClass} w-full`} placeholder="0.00" value={item.price} onChange={(e) => actions.updateItem(item.id, "price", parseFloat(e.target.value))} />
                                 </div>
                                 {data.config.enableTax && (
-                                    <div className="col-span-1 md:col-span-1">
+                                    <div className="col-span-2 md:col-span-2">
                                         <input type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.tax} onChange={(e) => actions.updateItem(item.id, "tax", parseFloat(e.target.value))} />
                                     </div>
                                 )}
