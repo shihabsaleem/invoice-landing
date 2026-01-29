@@ -85,8 +85,9 @@ export const landingPageData = {
         links: [
             { text: "Privacy Policy", href: "/privacy" },
             { text: "Terms of Service", href: "/terms" },
-            { text: "jadbery.com", href: "https://jadbery.com" },
-            { text: "Support", href: "mailto:support@jadbery.com" }
+            { text: "Support", href: "mailto:support@jadbery.com" },
+            { text: "Dev", href: "https://shihabsaleem.site" },
+            { text: "jadbery", href: "https://jadbery.com" },
         ]
     }
 };

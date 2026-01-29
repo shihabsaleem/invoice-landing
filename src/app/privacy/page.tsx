@@ -13,7 +13,7 @@ export default function PrivacyPage() {
                     <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
 
                     <div className="prose prose-slate max-w-none">
-                        <p className="text-slate-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
+                        <p className="text-slate-600 mb-6">Effective Date: January 29, 2026</p>
 
                         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">1. Information We Collect</h2>
                         <p className="text-slate-600 mb-4">
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
                         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">4. Third-Party Services</h2>
                         <p className="text-slate-600 mb-4">
-                            We may use standard analytics tools (like Google Analytics) to understand website traffic, but these do not link to your invoice data.
+                            We use <strong>Google Analytics 4</strong> to understand anonymous website traffic and usage patterns (e.g., usage of features). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. These tools do not have access to the specific content of your invoices.
                         </p>
 
                         <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">5. Contact Us</h2>
