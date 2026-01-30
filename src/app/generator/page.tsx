@@ -223,7 +223,8 @@ export default function GeneratorPage() {
 
         } catch (err) {
             console.error("PDF Generation failed", err);
-            alert("Failed to generate PDF. Please try again.");
+            const errorMessage = err instanceof Error ? err.message : String(err);
+            alert(`Failed to generate PDF: ${errorMessage}`);
         } finally {
             cleanupPageBreaks();
             setIsGenerating(false);

@@ -129,7 +129,7 @@ export default function InvoicePreview({ data, invoiceRef }: Props) {
                 )}
                 {/* Footer */}
                 <div
-                    className="mt-12 text-center text-[8px] text-slate-400 border-t border-slate-200/50 pt-4 flex flex-col items-center justify-center gap-1"
+                    className="mt-12 text-center text-[8px] text-slate-400 border-t border-slate-200 pt-4 flex flex-col items-center justify-center gap-1"
                     style={{ pageBreakInside: 'avoid' }}
                 >
                     <p className="text-slate-500 font-medium mb-1">Thank you for your business!</p>
