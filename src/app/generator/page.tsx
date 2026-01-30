@@ -8,11 +8,13 @@ import { Download, ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import WishGreetingPopup from "@/components/invoice/WishGreetingPopup";
 
 export default function GeneratorPage() {
     const { data, ...actions } = useInvoice();
     const invoiceRef = useRef<HTMLDivElement>(null);
     const [isGenerating, setIsGenerating] = useState(false);
+    const [showGreeting, setShowGreeting] = useState(false);
 
     const handleDownload = async () => {
         if (!invoiceRef.current) return;
@@ -194,6 +196,12 @@ export default function GeneratorPage() {
             const fileName = `${data.details.docType}-${data.details.invoiceNumber || "draft"}.pdf`;
             pdf.save(fileName);
 
+            // 7. Show Greeting
+            const isHidden = localStorage.getItem("hideGreeting") === "true";
+            if (!isHidden) {
+                setShowGreeting(true);
+            }
+
         } catch (err) {
             console.error("PDF Generation failed", err);
             alert("Failed to generate PDF. Please try again.");
@@ -245,6 +253,11 @@ export default function GeneratorPage() {
                 {isGenerating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
                 {isGenerating ? "Generating..." : "Download PDF"}
             </button>
+
+            <WishGreetingPopup
+                isOpen={showGreeting}
+                onClose={() => setShowGreeting(false)}
+            />
         </div >
     );
 }
