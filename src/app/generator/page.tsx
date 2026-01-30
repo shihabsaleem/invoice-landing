@@ -237,7 +237,7 @@ export default function GeneratorPage() {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                     <div className="flex items-center gap-4">
-                        <Link href="/" className="p-2 bg-white rounded-full border hover:bg-slate-50 transition">
+                        <Link href="/" className="p-2 bg-white rounded-full border hover:bg-slate-50 transition" aria-label="Back to Home">
                             <ArrowLeft className="w-5 h-5 text-slate-600" />
                         </Link>
                         <div>

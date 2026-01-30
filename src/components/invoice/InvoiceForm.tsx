@@ -2,6 +2,7 @@
 
 import { useInvoice } from "@/hooks/useInvoice";
 import { Plus, Trash2, RefreshCcw, GripHorizontal } from "lucide-react";
+import { useId } from "react";
 
 type Props = {
     data: ReturnType<typeof useInvoice>["data"];
@@ -36,13 +37,7 @@ export default function InvoiceForm({ data, actions }: Props) {
     const smallInputClass = "p-2.5 border border-slate-300 rounded-lg text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all duration-200";
     const labelClass = "text-xs font-semibold text-slate-600 block mb-1";
 
-    // Helper for deeply nested updates if needed, but actions are flat.
-    // We might need to extend useInvoice for deep config updates or just manual spread in handle
-
-    // Since config.labels is nested, we need a way to update it. 
-    // checking useInvoice hooks... updateConfig takes (field, value). 
-    // If field is 'labels', value is object. We might need a specific handler for labels or pass full object.
-    // For now I'll use updateConfig('labels', { ...data.config.labels, [key]: val }) directly in onChange.
+    const baseId = useId();
 
     return (
         <div className="space-y-8 p-6 bg-white rounded-xl shadow-sm border border-slate-200">
@@ -51,28 +46,28 @@ export default function InvoiceForm({ data, actions }: Props) {
                 <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Your Company</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className={labelClass}>Company Name</label>
-                        <input className={inputClass} value={data.company.name} onChange={(e) => actions.updateCompany("name", e.target.value)} placeholder="Your Business Name" />
+                        <label htmlFor={`${baseId}-co-name`} className={labelClass}>Company Name</label>
+                        <input id={`${baseId}-co-name`} className={inputClass} value={data.company.name} onChange={(e) => actions.updateCompany("name", e.target.value)} placeholder="Your Business Name" />
                     </div>
                     <div>
-                        <label className={labelClass}>Logo</label>
-                        <input type="file" accept="image/*" onChange={fileInputHandler} className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" />
+                        <label htmlFor={`${baseId}-co-logo`} className={labelClass}>Logo</label>
+                        <input id={`${baseId}-co-logo`} type="file" accept="image/*" onChange={fileInputHandler} className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" />
                     </div>
                     <div className="col-span-full">
-                        <label className={labelClass}>Address</label>
-                        <textarea className={`${inputClass} h-20`} value={data.company.address} onChange={(e) => actions.updateCompany("address", e.target.value)} placeholder="123 Business St, City, Country" />
+                        <label htmlFor={`${baseId}-co-address`} className={labelClass}>Address</label>
+                        <textarea id={`${baseId}-co-address`} className={`${inputClass} h-20`} value={data.company.address} onChange={(e) => actions.updateCompany("address", e.target.value)} placeholder="123 Business St, City, Country" />
                     </div>
                     <div>
-                        <label className={labelClass}>Email</label>
-                        <input className={inputClass} value={data.company.email} onChange={(e) => actions.updateCompany("email", e.target.value)} placeholder="you@example.com" />
+                        <label htmlFor={`${baseId}-co-email`} className={labelClass}>Email</label>
+                        <input id={`${baseId}-co-email`} className={inputClass} value={data.company.email} onChange={(e) => actions.updateCompany("email", e.target.value)} placeholder="you@example.com" />
                     </div>
                     <div>
-                        <label className={labelClass}>Phone</label>
-                        <input className={inputClass} value={data.company.phone} onChange={(e) => actions.updateCompany("phone", e.target.value)} placeholder="+1 234 567 890" />
+                        <label htmlFor={`${baseId}-co-phone`} className={labelClass}>Phone</label>
+                        <input id={`${baseId}-co-phone`} className={inputClass} value={data.company.phone} onChange={(e) => actions.updateCompany("phone", e.target.value)} placeholder="+1 234 567 890" />
                     </div>
                     <div>
-                        <label className={labelClass}>Tax ID / VAT</label>
-                        <input className={inputClass} value={data.company.tax} onChange={(e) => actions.updateCompany("tax", e.target.value)} placeholder="TAX-123456" />
+                        <label htmlFor={`${baseId}-co-tax`} className={labelClass}>Tax ID / VAT</label>
+                        <input id={`${baseId}-co-tax`} className={inputClass} value={data.company.tax} onChange={(e) => actions.updateCompany("tax", e.target.value)} placeholder="TAX-123456" />
                     </div>
                 </div>
             </section>
@@ -88,24 +83,24 @@ export default function InvoiceForm({ data, actions }: Props) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-full">
-                        <label className={labelClass}>Client Name</label>
-                        <input className={inputClass} value={data.client.name} onChange={(e) => actions.updateClient("name", e.target.value)} placeholder="Client Business Name" />
+                        <label htmlFor={`${baseId}-cl-name`} className={labelClass}>Client Name</label>
+                        <input id={`${baseId}-cl-name`} className={inputClass} value={data.client.name} onChange={(e) => actions.updateClient("name", e.target.value)} placeholder="Client Business Name" />
                     </div>
                     <div className="col-span-full">
-                        <label className={labelClass}>Address</label>
-                        <textarea className={`${inputClass} h-20`} value={data.client.address} onChange={(e) => actions.updateClient("address", e.target.value)} placeholder="Client Address" />
+                        <label htmlFor={`${baseId}-cl-address`} className={labelClass}>Address</label>
+                        <textarea id={`${baseId}-cl-address`} className={`${inputClass} h-20`} value={data.client.address} onChange={(e) => actions.updateClient("address", e.target.value)} placeholder="Client Address" />
                     </div>
                     <div>
-                        <label className={labelClass}>Email</label>
-                        <input className={inputClass} value={data.client.email} onChange={(e) => actions.updateClient("email", e.target.value)} placeholder="client@example.com" />
+                        <label htmlFor={`${baseId}-cl-email`} className={labelClass}>Email</label>
+                        <input id={`${baseId}-cl-email`} className={inputClass} value={data.client.email} onChange={(e) => actions.updateClient("email", e.target.value)} placeholder="client@example.com" />
                     </div>
                     <div>
-                        <label className={labelClass}>Phone</label>
-                        <input className={inputClass} value={data.client.phone} onChange={(e) => actions.updateClient("phone", e.target.value)} placeholder="+1 555 000 000" />
+                        <label htmlFor={`${baseId}-cl-phone`} className={labelClass}>Phone</label>
+                        <input id={`${baseId}-cl-phone`} className={inputClass} value={data.client.phone} onChange={(e) => actions.updateClient("phone", e.target.value)} placeholder="+1 555 000 000" />
                     </div>
                     <div>
-                        <label className={labelClass}>Tax ID / VAT</label>
-                        <input className={inputClass} value={data.client.tax} onChange={(e) => actions.updateClient("tax", e.target.value)} placeholder="TAX-987654" />
+                        <label htmlFor={`${baseId}-cl-tax`} className={labelClass}>Tax ID / VAT</label>
+                        <input id={`${baseId}-cl-tax`} className={inputClass} value={data.client.tax} onChange={(e) => actions.updateClient("tax", e.target.value)} placeholder="TAX-987654" />
                     </div>
                 </div>
             </section>
@@ -117,28 +112,28 @@ export default function InvoiceForm({ data, actions }: Props) {
                 <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Invoice Details</h3>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className={labelClass}>Document Type</label>
-                        <input className={inputClass} value={data.details.docType} onChange={(e) => actions.updateDetails("docType", e.target.value)} placeholder="Invoice, Quote..." />
+                        <label htmlFor={`${baseId}-det-doctype`} className={labelClass}>Document Type</label>
+                        <input id={`${baseId}-det-doctype`} className={inputClass} value={data.details.docType} onChange={(e) => actions.updateDetails("docType", e.target.value)} placeholder="Invoice, Quote..." />
                     </div>
                     <div>
-                        <label className={labelClass}>Number</label>
-                        <input className={inputClass} value={data.details.invoiceNumber} onChange={(e) => actions.updateDetails("invoiceNumber", e.target.value)} placeholder="INV-001" />
+                        <label htmlFor={`${baseId}-det-number`} className={labelClass}>Number</label>
+                        <input id={`${baseId}-det-number`} className={inputClass} value={data.details.invoiceNumber} onChange={(e) => actions.updateDetails("invoiceNumber", e.target.value)} placeholder="INV-001" />
                     </div>
                     <div>
-                        <label className={labelClass}>Date</label>
-                        <input type="date" className={inputClass} value={data.details.invoiceDate} onChange={(e) => actions.updateDetails("invoiceDate", e.target.value)} />
+                        <label htmlFor={`${baseId}-det-date`} className={labelClass}>Date</label>
+                        <input id={`${baseId}-det-date`} type="date" className={inputClass} value={data.details.invoiceDate} onChange={(e) => actions.updateDetails("invoiceDate", e.target.value)} />
                     </div>
                     <div>
-                        <label className={labelClass}>Due Date</label>
-                        <input type="date" className={inputClass} value={data.details.dueDate} onChange={(e) => actions.updateDetails("dueDate", e.target.value)} />
+                        <label htmlFor={`${baseId}-det-due`} className={labelClass}>Due Date</label>
+                        <input id={`${baseId}-det-due`} type="date" className={inputClass} value={data.details.dueDate} onChange={(e) => actions.updateDetails("dueDate", e.target.value)} />
                     </div>
                     <div>
-                        <label className={labelClass}>Currency</label>
+                        <label htmlFor={`${baseId}-det-currency`} className={labelClass}>Currency</label>
                         {/* Changed to input as requested */}
-                        <input className={inputClass} value={data.details.currency} onChange={(e) => actions.updateDetails("currency", e.target.value)} placeholder="$ or USD" />
+                        <input id={`${baseId}-det-currency`} className={inputClass} value={data.details.currency} onChange={(e) => actions.updateDetails("currency", e.target.value)} placeholder="$ or USD" />
                     </div>
                     <div className="col-span-2">
-                        <label className={labelClass}>Brand Color</label>
+                        <span className={labelClass}>Brand Color</span>
                         <div className="flex flex-wrap items-center gap-3 mt-2">
                             {/* Swatches */}
                             {BRAND_COLORS.map(color => (
@@ -147,13 +142,15 @@ export default function InvoiceForm({ data, actions }: Props) {
                                     onClick={() => actions.updateDetails("brandColor", color)}
                                     className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${data.details.brandColor === color ? 'border-slate-900 shadow-md' : 'border-transparent'}`}
                                     style={{ backgroundColor: color }}
-                                    title={color}
+                                    title={`Select color ${color}`}
+                                    aria-label={`Select color ${color}`}
                                 />
                             ))}
                             {/* Custom Picker */}
                             <div className="relative group">
-                                <input type="color" className="w-8 h-8 opacity-0 absolute inset-0 cursor-pointer" value={data.details.brandColor} onChange={(e) => actions.updateDetails("brandColor", e.target.value)} />
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 border-2 border-slate-300 flex items-center justify-center text-slate-500 group-hover:border-slate-400">
+                                <label htmlFor={`${baseId}-custom-color`} className="sr-only">Custom Color</label>
+                                <input id={`${baseId}-custom-color`} type="color" className="w-8 h-8 opacity-0 absolute inset-0 cursor-pointer" value={data.details.brandColor} onChange={(e) => actions.updateDetails("brandColor", e.target.value)} />
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 border-2 border-slate-300 flex items-center justify-center text-slate-500 group-hover:border-slate-400 pointer-events-none">
                                     <span className="text-xs">+</span>
                                 </div>
                             </div>
@@ -221,21 +218,21 @@ export default function InvoiceForm({ data, actions }: Props) {
                             </div>
                             <div className="flex-1 grid grid-cols-12 gap-2">
                                 <div className={`${data.config.enableTax ? 'col-span-6 md:col-span-6' : 'col-span-8'}`}>
-                                    <input className={`${inputClass}`} placeholder="Description" value={item.desc} onChange={(e) => actions.updateItem(item.id, "desc", e.target.value)} />
+                                    <input aria-label="Item description" className={`${inputClass}`} placeholder="Description" value={item.desc} onChange={(e) => actions.updateItem(item.id, "desc", e.target.value)} />
                                 </div>
                                 <div className="col-span-2">
-                                    <input type="number" className={`${smallInputClass} w-full`} placeholder="0" value={item.qty} onChange={(e) => actions.updateItem(item.id, "qty", parseFloat(e.target.value))} />
+                                    <input aria-label="Quantity" type="number" className={`${smallInputClass} w-full`} placeholder="0" value={item.qty} onChange={(e) => actions.updateItem(item.id, "qty", parseFloat(e.target.value))} />
                                 </div>
                                 <div className="col-span-2">
-                                    <input type="number" className={`${smallInputClass} w-full`} placeholder="0.00" value={item.price} onChange={(e) => actions.updateItem(item.id, "price", parseFloat(e.target.value))} />
+                                    <input aria-label="Price" type="number" className={`${smallInputClass} w-full`} placeholder="0.00" value={item.price} onChange={(e) => actions.updateItem(item.id, "price", parseFloat(e.target.value))} />
                                 </div>
                                 {data.config.enableTax && (
                                     <div className="col-span-2 md:col-span-2">
-                                        <input type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.tax} onChange={(e) => actions.updateItem(item.id, "tax", parseFloat(e.target.value))} />
+                                        <input aria-label="Tax percentage" type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.tax} onChange={(e) => actions.updateItem(item.id, "tax", parseFloat(e.target.value))} />
                                     </div>
                                 )}
                             </div>
-                            <button onClick={() => actions.removeItem(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded mt-1" disabled={data.items.length <= 1}>
+                            <button onClick={() => actions.removeItem(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded mt-1" disabled={data.items.length <= 1} aria-label="Remove item">
                                 <Trash2 className="w-5 h-5" />
                             </button>
                         </div>
@@ -248,8 +245,8 @@ export default function InvoiceForm({ data, actions }: Props) {
 
                 {data.config.enableDiscount && (
                     <div className="flex items-center gap-2 justify-end mt-4">
-                        <label className="text-sm font-medium text-slate-700">Discount %</label>
-                        <input type="number" className={`${smallInputClass} w-24`} value={data.config.discountPercentage} onChange={(e) => actions.updateConfig("discountPercentage", parseFloat(e.target.value))} />
+                        <label htmlFor={`${baseId}-discount`} className="text-sm font-medium text-slate-700">Discount %</label>
+                        <input id={`${baseId}-discount`} type="number" className={`${smallInputClass} w-24`} value={data.config.discountPercentage} onChange={(e) => actions.updateConfig("discountPercentage", parseFloat(e.target.value))} />
                     </div>
                 )}
             </section>
@@ -257,9 +254,9 @@ export default function InvoiceForm({ data, actions }: Props) {
             <hr className="border-slate-100" />
 
             <section>
-                <label className={labelClass}>Notes / Terms</label>
-                <input className={`${inputClass} mb-2 font-medium`} value={data.config.notesHeading} onChange={(e) => actions.updateConfig("notesHeading", e.target.value)} />
-                <textarea className={`${inputClass} h-24`} value={data.config.notes} onChange={(e) => actions.updateConfig("notes", e.target.value)} placeholder="Payment details, thank you note, etc." />
+                <label htmlFor={`${baseId}-notes-heading`} className={labelClass}>Notes / Terms</label>
+                <input id={`${baseId}-notes-heading`} className={`${inputClass} mb-2 font-medium`} value={data.config.notesHeading} onChange={(e) => actions.updateConfig("notesHeading", e.target.value)} />
+                <textarea id={`${baseId}-notes-body`} className={`${inputClass} h-24`} value={data.config.notes} onChange={(e) => actions.updateConfig("notes", e.target.value)} placeholder="Payment details, thank you note, etc." />
             </section>
 
             <button onClick={() => { if (confirm("Reset invoice?")) actions.resetInvoice() }} className="text-red-500 text-sm flex items-center gap-2 hover:underline">

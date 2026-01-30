@@ -39,10 +39,16 @@ export default function WishGreetingPopup({ isOpen, onClose }: Props) {
             ></div>
 
             {/* Modal */}
-            <div className={`bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 relative transform transition-all duration-300 ${isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-4"}`}>
+            <div
+                className={`bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 relative transform transition-all duration-300 ${isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-4"}`}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="greeting-title"
+            >
                 <button
                     onClick={handleClose}
                     className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+                    aria-label="Close modal"
                 >
                     <X className="w-5 h-5" />
                 </button>
@@ -52,7 +58,7 @@ export default function WishGreetingPopup({ isOpen, onClose }: Props) {
                         <PartyPopper className="w-8 h-8" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">Invoice Generated!</h3>
+                    <h3 id="greeting-title" className="text-xl font-bold text-slate-900 mb-2">Invoice Generated!</h3>
                     <p className="text-slate-500 mb-8">
                         Your PDF has been successfully created and downloaded. We hope this helps your business grow even faster! 🚀
                     </p>
