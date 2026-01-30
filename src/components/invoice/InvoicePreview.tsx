@@ -7,9 +7,10 @@ import { RefObject } from "react";
 type Props = {
     data: ReturnType<typeof useInvoice>["data"];
     invoiceRef: RefObject<HTMLDivElement | null>;
+    removeBranding?: boolean;
 };
 
-export default function InvoicePreview({ data, invoiceRef }: Props) {
+export default function InvoicePreview({ data, invoiceRef, removeBranding }: Props) {
     const { company, client, details, items, config } = data;
     const totals = calculateTotals(data);
     const defaults = { items: "Description", qty: "Qty", price: "Price", amount: "Amount" };
@@ -133,8 +134,12 @@ export default function InvoicePreview({ data, invoiceRef }: Props) {
                     style={{ pageBreakInside: 'avoid' }}
                 >
                     <p className="text-slate-500 font-medium mb-1">Thank you for your business!</p>
-                    <p className="text-slate-400 text-[6px] uppercase tracking-wider">Generated with</p>
-                    <img src="/assets/logo-jadbery.png" alt="Jadbery Logo" className="h-6 opacity-80" />
+                    {!removeBranding && (
+                        <>
+                            <p className="text-slate-400 text-[6px] uppercase tracking-wider">Generated with</p>
+                            <img src="/assets/logo-jadbery.png" alt="Jadbery Logo" className="h-6 opacity-80" />
+                        </>
+                    )}
                 </div>
             </div>
         </div>
