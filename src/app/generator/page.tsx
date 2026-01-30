@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useInvoice } from "@/hooks/useInvoice";
 import InvoiceForm from "@/components/invoice/InvoiceForm";
 import InvoicePreview from "@/components/invoice/InvoicePreview";
-import { Download, ArrowLeft, Loader2 } from "lucide-react";
+import { Download, ArrowLeft, Loader2, Share2, Check } from "lucide-react";
 import Link from "next/link";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -15,6 +15,25 @@ export default function GeneratorPage() {
     const invoiceRef = useRef<HTMLDivElement>(null);
     const [isGenerating, setIsGenerating] = useState(false);
     const [showGreeting, setShowGreeting] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: "Invoice Generator",
+                    text: "Check out this free invoice generator!",
+                    url: window.location.href,
+                });
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000);
+            }
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    };
 
     const handleDownload = async () => {
         if (!invoiceRef.current) return;
@@ -227,6 +246,13 @@ export default function GeneratorPage() {
                         </div>
                     </div>
 
+                    <button
+                        onClick={handleShare}
+                        className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm"
+                    >
+                        {isCopied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
+                        {isCopied ? "Copied!" : "Share"}
+                    </button>
                 </div>
 
                 {/* Main Content */}
