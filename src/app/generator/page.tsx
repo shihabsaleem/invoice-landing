@@ -284,6 +284,7 @@ export default function GeneratorPage() {
             <WishGreetingPopup
                 isOpen={showGreeting}
                 onClose={() => setShowGreeting(false)}
+                docType={data.details.docType || "Invoice"}
             />
         </div >
     );

@@ -6,9 +6,10 @@ import { X, Heart, PartyPopper } from "lucide-react";
 type Props = {
     isOpen: boolean;
     onClose: () => void;
+    docType?: string;
 };
 
-export default function WishGreetingPopup({ isOpen, onClose }: Props) {
+export default function WishGreetingPopup({ isOpen, onClose, docType = "Invoice" }: Props) {
     const [dontShowAgain, setDontShowAgain] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -58,9 +59,9 @@ export default function WishGreetingPopup({ isOpen, onClose }: Props) {
                         <PartyPopper className="w-8 h-8" />
                     </div>
 
-                    <h3 id="greeting-title" className="text-xl font-bold text-slate-900 mb-2">Invoice Generated!</h3>
+                    <h3 id="greeting-title" className="text-xl font-bold text-slate-900 mb-2">{docType} Generated!</h3>
                     <p className="text-slate-500 mb-8">
-                        Your PDF has been successfully created and downloaded. We hope this helps your business grow even faster! 🚀
+                        Your {docType.toLowerCase()} has been successfully created and downloaded. We hope this helps your business grow even faster! 🚀
                     </p>
 
                     <button
