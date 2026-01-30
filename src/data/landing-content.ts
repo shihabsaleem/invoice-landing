@@ -57,14 +57,16 @@ export const landingPageData = {
     testimonials: {
         items: [
             {
-                name: "Sarah J.",
-                role: "Graphic Designer",
-                quote: "\"The best part is I don't need to login to some slow website. I just click the extension, fill it out, and boom—PDF ready in seconds.\""
+                name: "Adil Rafeeque.",
+                role: "Digital Marketer",
+                quote: "\"The best part is I don't need to login to some slow website. I just click the extension, fill it out, and boom—PDF ready in seconds.\"",
+                authorLink: "https://adilrafeeque.com/"
             },
             {
                 name: "Mike R.",
                 role: "Consultant",
-                quote: "\"Finally, an invoice tool that doesn't try to upsell me. Clean, fast, and the branding options are perfect.\""
+                quote: "\"Finally, an invoice tool that doesn't try to upsell me. Clean, fast, and the branding options are perfect.\"",
+                authorLink: "#"
             }
         ],
         ctaCard: {
@@ -88,6 +90,61 @@ export const landingPageData = {
             { text: "Support", href: "mailto:support@jadbery.com" },
             { text: "Dev", href: "https://shihabsaleem.site" },
             { text: "jadbery", href: "https://jadbery.com" },
+        ]
+    },
+    privacyPolicy: {
+        effectiveDate: "January 29, 2026",
+        contactEmail: "support@jadbery.com",
+        sections: [
+            {
+                title: "1. Information We Collect",
+                content: "We operate on a \"Privacy First\" principle. <strong>We do not collect any personal data from you.</strong> All data you enter into the Invoice Generator (including company details, client information, and invoice items) is stored locally on your device using your browser's Local Storage."
+            },
+            {
+                title: "2. How We Use Information",
+                content: "Since we do not collect your information, we do not use, share, or sell it. The data remains strictly on your device for your convenience (e.g., to reload your previous invoice)."
+            },
+            {
+                title: "3. Data Security",
+                content: "Your data security is managed by your browser's security protocols. We generally recommend that you do not use public computers to generate sensitive financial documents, as local storage may persist on shared devices."
+            },
+            {
+                title: "4. Third-Party Services",
+                content: "We use <strong>Google Analytics 4</strong> to understand anonymous website traffic and usage patterns (e.g., usage of features). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. These tools do not have access to the specific content of your invoices."
+            },
+            {
+                title: "5. Contact Us",
+                content: "If you have any questions about this Privacy Policy, please contact us at support@jadbery.com."
+            }
+        ]
+    },
+    termsOfService: {
+        effectiveDate: "January 29, 2026",
+        sections: [
+            {
+                title: "1. Acceptance of Terms",
+                content: "By accessing or using the Invoice by Jadbery website and generator, you agree to be bound by these Terms of Service."
+            },
+            {
+                title: "2. Content Ownership",
+                content: "<strong>You own the content you generate.</strong> The invoices/documents created using this tool are your property. We lay no claim to the data or the final documents produced."
+            },
+            {
+                title: "3. Use License",
+                content: "Permission is granted to use the Invoice by Jadbery software for personal or commercial document generation."
+            },
+            {
+                title: "4. Disclaimer",
+                content: "The materials on Invoice by Jadbery's website are provided on an 'as is' basis. We make no warranties, expressed or implied, regarding the reliability or availability of the service."
+            },
+            {
+                title: "5. Limitations",
+                content: "In no event shall Invoice by Jadbery be liable for any damages (including, without limitation, damages for loss of data or profit) arising out of the use or inability to use the materials on our website."
+            },
+            {
+                title: "6. Governing Law",
+                content: "These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction of our incorporation."
+            }
         ]
     }
 };

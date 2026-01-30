@@ -31,7 +31,7 @@ export default function Testimonials() {
                         >
                             <Quote className="absolute top-8 right-8 w-10 h-10 text-brand-100 group-hover:text-brand-200 transition-colors" />
 
-                            <div className="relative z-10">
+                            <div className="relative z-10 h-full flex flex-col justify-around content-between">
                                 <p className="text-slate-700 text-lg leading-relaxed mb-8 font-medium">
                                     "{item.quote}"
                                 </p>
@@ -41,7 +41,20 @@ export default function Testimonials() {
                                         {item.name.charAt(0)}
                                     </div>
                                     <div>
-                                        <p className="font-bold text-slate-900 text-base">{item.name}</p>
+                                        {/* @ts-ignore */}
+                                        {item.authorLink ? (
+                                            <a
+                                                // @ts-ignore
+                                                href={item.authorLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="font-bold text-slate-900 text-base hover:text-brand-600 transition-colors"
+                                            >
+                                                {item.name}
+                                            </a>
+                                        ) : (
+                                            <p className="font-bold text-slate-900 text-base">{item.name}</p>
+                                        )}
                                         <p className="text-sm text-brand-600 font-medium tracking-wide uppercase">{item.role}</p>
                                     </div>
                                 </div>
