@@ -110,7 +110,7 @@ export const landingPageData = {
             },
             {
                 title: "4. Third-Party Services",
-                content: "We use <strong>Google Analytics 4</strong> to understand anonymous website traffic and usage patterns (e.g., usage of features). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. These tools do not have access to the specific content of your invoices."
+                content: "We use <strong>Google Analytics 4</strong> and <strong>Microsoft Clarity</strong> on our <strong>Website</strong> to understand anonymous traffic, usage patterns, and user interactions (via heatmaps and session replays). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. <br /><br /><strong>Note for Chrome Extension Users:</strong> The Invoice by Jadbery Chrome Extension does <strong>NOT</strong> use Microsoft Clarity or any session recording tools. It operates with strict privacy, storing data locally."
             },
             {
                 title: "5. Contact Us",

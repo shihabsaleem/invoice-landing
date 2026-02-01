@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import CookieBanner from "@/components/analytics/CookieBanner";
 
 const quicksand = Quicksand({
@@ -105,6 +106,7 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
                 <GoogleAnalytics GA_MEASUREMENT_ID="G-901BG54SSM" />
+                <MicrosoftClarity />
                 <Navbar />
                 <main>
                     {children}
