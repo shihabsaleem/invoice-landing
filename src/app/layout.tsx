@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import GoogleAdSense from "@/components/analytics/GoogleAdSense";
+import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import CookieBanner from "@/components/analytics/CookieBanner";
 
 const quicksand = Quicksand({
@@ -107,6 +108,7 @@ export default function RootLayout({
                 />
                 <GoogleAnalytics GA_MEASUREMENT_ID="G-901BG54SSM" />
                 <GoogleAdSense pId="ca-pub-2766481636707915" />
+                <MicrosoftClarity />
                 <Navbar />
                 <main>
                     {children}

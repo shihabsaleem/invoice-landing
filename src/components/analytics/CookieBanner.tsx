@@ -31,8 +31,8 @@ export default function CookieBanner() {
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-sm text-slate-600">
                     <p>
-                        We use cookies to improve your experience and analyze site traffic.
-                        By clicking "Accept", you verify that you are happy with our use of analytics cookies.
+                        We use cookies and similar technologies to improve your experience, analyze site traffic, and understand user behavior.
+                        By clicking "Accept", you consent to our use of these tools.
                     </p>
                 </div>
                 <div className="flex gap-3 shrink-0">
