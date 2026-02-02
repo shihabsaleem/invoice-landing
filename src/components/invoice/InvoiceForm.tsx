@@ -190,7 +190,7 @@ export default function InvoiceForm({ data, actions }: Props) {
                     <div className="w-4"></div>
 
                     <div className="flex-1 grid grid-cols-12 gap-2">
-                        <div className={`${data.config.enableTax ? 'col-span-6 md:col-span-6' : 'col-span-8'}`}>
+                        <div className={`${data.config.enableTax && data.config.enableDiscount ? 'col-span-4' : data.config.enableTax || data.config.enableDiscount ? 'col-span-6' : 'col-span-8'}`}>
                             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Item</span>
                         </div>
                         <div className="col-span-2">
@@ -200,8 +200,13 @@ export default function InvoiceForm({ data, actions }: Props) {
                             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Price</span>
                         </div>
                         {data.config.enableTax && (
-                            <div className="col-span-2 md:col-span-2">
+                            <div className="col-span-2">
                                 <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tax</span>
+                            </div>
+                        )}
+                        {data.config.enableDiscount && (
+                            <div className="col-span-2">
+                                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Disc</span>
                             </div>
                         )}
                     </div>
@@ -217,7 +222,7 @@ export default function InvoiceForm({ data, actions }: Props) {
                                 <GripHorizontal className="w-4 h-4" />
                             </div>
                             <div className="flex-1 grid grid-cols-12 gap-2">
-                                <div className={`${data.config.enableTax ? 'col-span-6 md:col-span-6' : 'col-span-8'}`}>
+                                <div className={`${data.config.enableTax && data.config.enableDiscount ? 'col-span-4' : data.config.enableTax || data.config.enableDiscount ? 'col-span-6' : 'col-span-8'}`}>
                                     <input aria-label="Item description" className={`${inputClass}`} placeholder="Description" value={item.desc} onChange={(e) => actions.updateItem(item.id, "desc", e.target.value)} />
                                 </div>
                                 <div className="col-span-2">
@@ -227,8 +232,13 @@ export default function InvoiceForm({ data, actions }: Props) {
                                     <input aria-label="Price" type="number" className={`${smallInputClass} w-full`} placeholder="0.00" value={item.price} onChange={(e) => actions.updateItem(item.id, "price", parseFloat(e.target.value))} />
                                 </div>
                                 {data.config.enableTax && (
-                                    <div className="col-span-2 md:col-span-2">
+                                    <div className="col-span-2">
                                         <input aria-label="Tax percentage" type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.tax} onChange={(e) => actions.updateItem(item.id, "tax", parseFloat(e.target.value))} />
+                                    </div>
+                                )}
+                                {data.config.enableDiscount && (
+                                    <div className="col-span-2">
+                                        <input aria-label="Discount percentage" type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.discount || 0} onChange={(e) => actions.updateItem(item.id, "discount", parseFloat(e.target.value))} />
                                     </div>
                                 )}
                             </div>
@@ -243,12 +253,7 @@ export default function InvoiceForm({ data, actions }: Props) {
                     <Plus className="w-4 h-4" /> Add Item
                 </button>
 
-                {data.config.enableDiscount && (
-                    <div className="flex items-center gap-2 justify-end mt-4">
-                        <label htmlFor={`${baseId}-discount`} className="text-sm font-medium text-slate-700">Discount %</label>
-                        <input id={`${baseId}-discount`} type="number" className={`${smallInputClass} w-24`} value={data.config.discountPercentage} onChange={(e) => actions.updateConfig("discountPercentage", parseFloat(e.target.value))} />
-                    </div>
-                )}
+                {/* Global discount configuration removed in favor of item-wise discount */}
             </section>
 
             <hr className="border-slate-100" />

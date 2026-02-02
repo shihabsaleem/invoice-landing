@@ -4,6 +4,7 @@ export type InvoiceItem = {
     qty: number;
     price: number;
     tax: number;
+    discount?: number;
 };
 
 export type InvoiceData = {
@@ -58,7 +59,7 @@ export const DEFAULT_INVOICE: InvoiceData = {
         brandColor: "#e11d48", // Brand-600
     },
     items: [
-        { id: "1", desc: "", qty: 1, price: 0, tax: 0 }
+        { id: "1", desc: "", qty: 1, price: 0, tax: 0, discount: 0 }
     ],
     config: {
         enableTax: true,
