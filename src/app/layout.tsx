@@ -67,7 +67,7 @@ export const metadata: Metadata = {
         siteName: 'Invoice by Jadbery',
         images: [
             {
-                url: '/assets/InvoiceOG.jpg',
+                url: '/assets/invoice-cover.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Invoice by Jadbery',
@@ -81,7 +81,10 @@ export const metadata: Metadata = {
         title: "Invoice by Jadbery",
         description: "Professional Invoice Generator for Freelancers and Small Businesses.",
         creator: '@jadbery',
-        images: ['/assets/InvoiceOG.jpg'],
+        images: ['/assets/invoice-cover.jpg'],
+    },
+    other: {
+        "itemprop:image": "/assets/invoice-cover.jpg",
     },
     icons: {
         icon: "/assets/icon.png",
