@@ -21,7 +21,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
             <div
                 ref={invoiceRef}
                 id="invoice-preview"
-                className="bg-white w-[210mm] p-[10mm] text-slate-900 box-border relative font-sans"
+                className="bg-white w-[210mm] min-w-[210mm] shrink-0 p-[10mm] text-slate-900 box-border relative font-sans shadow-lg"
                 style={{
                     fontSize: "9px",
                     minHeight: "auto",

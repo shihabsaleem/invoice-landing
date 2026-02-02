@@ -43,7 +43,7 @@ export default function InvoiceForm({ data, actions }: Props) {
         <div className="space-y-8 p-6 bg-white rounded-xl shadow-sm border border-slate-200">
             {/* 1. Company Info */}
             <section className="space-y-4">
-                <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Your Company</h3>
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Your Company</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label htmlFor={`${baseId}-co-name`} className={labelClass}>Company Name</label>
@@ -77,7 +77,7 @@ export default function InvoiceForm({ data, actions }: Props) {
             {/* 2. Client Info */}
             <section className="space-y-4">
                 <div className="flex justify-between items-center">
-                    <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Bill To</h3>
+                    <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Bill To</h3>
                     <button onClick={() => actions.updateClient("name", "")} className="text-xs text-brand-600 hover:underline">Clear Client</button>
                 </div>
 
@@ -109,7 +109,7 @@ export default function InvoiceForm({ data, actions }: Props) {
 
             {/* 3. Invoice Details */}
             <section className="space-y-4">
-                <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Invoice Details</h3>
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Invoice Details</h3>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label htmlFor={`${baseId}-det-doctype`} className={labelClass}>Document Type</label>
@@ -164,7 +164,7 @@ export default function InvoiceForm({ data, actions }: Props) {
             {/* 4. Items */}
             <section className="space-y-4">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <h3 className="tex-sm font-semibold text-slate-400 uppercase tracking-wider">Items</h3>
+                    <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Items</h3>
                     <div className="flex gap-4">
                         {/* Styled Toggles */}
                         <label className="flex items-center gap-2 cursor-pointer select-none">
@@ -185,10 +185,7 @@ export default function InvoiceForm({ data, actions }: Props) {
                     </div>
                 </div>
 
-                <div className="flex gap-2 mb-2 px-1">
-                    {/* Spacer for Grip */}
-                    <div className="w-4"></div>
-
+                <div className="hidden md:flex gap-2 mb-2 px-1">
                     <div className="flex-1 grid grid-cols-12 gap-2">
                         <div className={`${data.config.enableTax && data.config.enableDiscount ? 'col-span-4' : data.config.enableTax || data.config.enableDiscount ? 'col-span-6' : 'col-span-8'}`}>
                             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Item</span>
@@ -217,32 +214,37 @@ export default function InvoiceForm({ data, actions }: Props) {
 
                 <div className="space-y-3">
                     {data.items.map((item, idx) => (
-                        <div key={item.id} className="flex gap-2 items-start group">
-                            <div className="mt-3 text-slate-300 cursor-move hover:text-slate-400">
-                                <GripHorizontal className="w-4 h-4" />
-                            </div>
-                            <div className="flex-1 grid grid-cols-12 gap-2">
-                                <div className={`${data.config.enableTax && data.config.enableDiscount ? 'col-span-4' : data.config.enableTax || data.config.enableDiscount ? 'col-span-6' : 'col-span-8'}`}>
+                        <div key={item.id} className="flex gap-2 items-start group relative p-2 md:p-0 bg-slate-50 md:bg-transparent rounded-lg md:rounded-none border md:border-none border-slate-200">
+                            <div className="flex-1 grid grid-cols-2 md:grid-cols-12 gap-2 w-full">
+                                <div className={`col-span-2 ${data.config.enableTax && data.config.enableDiscount ? 'md:col-span-4' : data.config.enableTax || data.config.enableDiscount ? 'md:col-span-6' : 'md:col-span-8'}`}>
+                                    <label className="text-xs font-semibold text-slate-500 md:hidden mb-1 block">Item Description</label>
                                     <input aria-label="Item description" className={`${inputClass}`} placeholder="Description" value={item.desc} onChange={(e) => actions.updateItem(item.id, "desc", e.target.value)} />
                                 </div>
-                                <div className="col-span-2">
+                                <div className="col-span-1 md:col-span-2">
+                                    <label className="text-xs font-semibold text-slate-500 md:hidden mb-1 block">Qty</label>
                                     <input aria-label="Quantity" type="number" className={`${smallInputClass} w-full`} placeholder="0" value={item.qty} onChange={(e) => actions.updateItem(item.id, "qty", parseFloat(e.target.value))} />
                                 </div>
-                                <div className="col-span-2">
+                                <div className="col-span-1 md:col-span-2">
+                                    <label className="text-xs font-semibold text-slate-500 md:hidden mb-1 block">Price</label>
                                     <input aria-label="Price" type="number" className={`${smallInputClass} w-full`} placeholder="0.00" value={item.price} onChange={(e) => actions.updateItem(item.id, "price", parseFloat(e.target.value))} />
                                 </div>
                                 {data.config.enableTax && (
-                                    <div className="col-span-2">
+                                    <div className="col-span-1 md:col-span-2">
+                                        <label className="text-xs font-semibold text-slate-500 md:hidden mb-1 block">Tax %</label>
                                         <input aria-label="Tax percentage" type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.tax} onChange={(e) => actions.updateItem(item.id, "tax", parseFloat(e.target.value))} />
                                     </div>
                                 )}
                                 {data.config.enableDiscount && (
-                                    <div className="col-span-2">
+                                    <div className="col-span-1 md:col-span-2">
+                                        <label className="text-xs font-semibold text-slate-500 md:hidden mb-1 block">Disc %</label>
                                         <input aria-label="Discount percentage" type="number" className={`${smallInputClass} w-full`} placeholder="%" value={item.discount || 0} onChange={(e) => actions.updateItem(item.id, "discount", parseFloat(e.target.value))} />
                                     </div>
                                 )}
                             </div>
-                            <button onClick={() => actions.removeItem(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded mt-1" disabled={data.items.length <= 1} aria-label="Remove item">
+                            <button onClick={() => actions.removeItem(item.id)} className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded mt-1 hidden md:block" disabled={data.items.length <= 1} aria-label="Remove item">
+                                <Trash2 className="w-5 h-5" />
+                            </button>
+                            <button onClick={() => actions.removeItem(item.id)} className="absolute bottom-2 right-2 p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded md:hidden" disabled={data.items.length <= 1} aria-label="Remove item">
                                 <Trash2 className="w-5 h-5" />
                             </button>
                         </div>

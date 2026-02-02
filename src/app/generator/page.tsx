@@ -4,20 +4,54 @@ import { useRef, useState } from "react";
 import { useInvoice } from "@/hooks/useInvoice";
 import InvoiceForm from "@/components/invoice/InvoiceForm";
 import InvoicePreview from "@/components/invoice/InvoicePreview";
-import { Download, ArrowLeft, Loader2, Share2, Check } from "lucide-react";
+import { Download, ArrowLeft, Loader2, Share2, Check, Eye, X } from "lucide-react";
 import Link from "next/link";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import WishGreetingPopup from "@/components/invoice/WishGreetingPopup";
+import { useEffect } from "react";
 
 export default function GeneratorPage() {
     const { data, ...actions } = useInvoice();
     const invoiceRef = useRef<HTMLDivElement>(null);
+    const desktopPreviewContainerRef = useRef<HTMLDivElement>(null);
     const [isGenerating, setIsGenerating] = useState(false);
     const [showGreeting, setShowGreeting] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
+    const [showPreview, setShowPreview] = useState(false);
+    const [previewScale, setPreviewScale] = useState(1);
 
     const [isAdWatched, setIsAdWatched] = useState(false);
+
+    useEffect(() => {
+        const calculateScale = () => {
+            if (window.innerWidth < 1024) {
+                // Mobile Logic: 210mm is approx 794px. We add some padding.
+                const scale = (window.innerWidth - 32) / 794;
+                setPreviewScale(Math.min(scale, 1));
+            } else {
+                // Desktop Logic: Fit to container
+                if (desktopPreviewContainerRef.current) {
+                    const containerWidth = desktopPreviewContainerRef.current.offsetWidth;
+                    const contentWidth = 794; // 210mm in px
+                    const padding = 64; // p-8 = 32px * 2
+                    const availableWidth = containerWidth - padding;
+
+                    if (availableWidth < contentWidth) {
+                        setPreviewScale(availableWidth / contentWidth);
+                    } else {
+                        setPreviewScale(1);
+                    }
+                } else {
+                    setPreviewScale(1);
+                }
+            }
+        };
+
+        calculateScale();
+        window.addEventListener("resize", calculateScale);
+        return () => window.removeEventListener("resize", calculateScale);
+    }, []);
 
     const handleWatchAd = () => {
         // TODO: Replace this with your actual Ad Network SDK (e.g., Google AdSense/AdMob)
@@ -291,6 +325,13 @@ export default function GeneratorPage() {
                             {isCopied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
                             {isCopied ? "Copied!" : "Share"}
                         </button>
+                        <button
+                            onClick={() => setShowPreview(true)}
+                            className="flex lg:hidden items-center gap-2 px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium text-sm shadow-sm"
+                        >
+                            <Eye className="w-4 h-4" />
+                            Preview
+                        </button>
                     </div>
                 </div>
 
@@ -301,11 +342,27 @@ export default function GeneratorPage() {
                         <InvoiceForm data={data} actions={actions} />
                     </div>
 
-                    {/* Right: Preview */}
-                    <div className="bg-slate-200/50 rounded-2xl p-4 md:p-8 flex justify-center">
-                        <InvoicePreview data={data} invoiceRef={invoiceRef} removeBranding={isAdWatched} />
+                    {/* Right: Preview (Visible on Desktop) */}
+                    <div ref={desktopPreviewContainerRef} className="hidden lg:flex bg-slate-200/50 rounded-2xl p-4 md:p-8 justify-center overflow-hidden sticky top-24">
+                        <div style={{ transform: `scale(${previewScale})`, transformOrigin: 'top center' }} className="transition-transform duration-200 ease-out">
+                            {/* Display Only Preview */}
+                            <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} />
+                        </div>
                     </div>
                 </div>
+
+                {/* Hidden Preview for PDF Generation (Always rendered as A4) */}
+                <div className="fixed top-0 left-0 pointer-events-none opacity-0 -z-50 w-[210mm] overflow-hidden">
+                    <div ref={invoiceRef}>
+                        <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} />
+                    </div>
+                </div>
+
+                <WishGreetingPopup
+                    isOpen={showGreeting}
+                    onClose={() => setShowGreeting(false)}
+                    docType={data.details.docType || "Invoice"}
+                />
             </div>
 
 
@@ -324,6 +381,29 @@ export default function GeneratorPage() {
                 onClose={() => setShowGreeting(false)}
                 docType={data.details.docType || "Invoice"}
             />
+
+            {/* Mobile Preview Modal */}
+            {showPreview && (
+                <div className="fixed inset-0 z-[200] bg-slate-100/90 backdrop-blur-sm flex items-center justify-center lg:hidden">
+                    <div className="absolute top-4 right-4 z-10">
+                        <button onClick={() => setShowPreview(false)} className="p-2 bg-white rounded-full shadow-md text-slate-600 hover:text-slate-900">
+                            <X className="w-6 h-6" />
+                        </button>
+                    </div>
+                    <div className="w-full h-full overflow-hidden flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+                        <div
+                            style={{
+                                transform: `scale(${previewScale})`,
+                                transformOrigin: 'center center'
+                            }}
+                            className="shadow-2xl"
+                        >
+                            {/* Read-only preview for mobile view */}
+                            <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div >
     );
 }
