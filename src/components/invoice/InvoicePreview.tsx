@@ -134,9 +134,12 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                         <p className="text-[9px] text-slate-600 whitespace-pre-wrap">{config.notes}</p>
                     </div>
                 )}
-                {config.enableTax && (
+                {(config.enableTax || config.enableDiscount) && (
                     <p className="text-[8px] text-slate-400 italic mt-2 pdf-item" style={{ pageBreakInside: 'avoid' }}>
-                        * Amounts are calculated as: (Price * Qty + Tax) - Discount
+                        * Amounts are calculated as: {' '}
+                        {config.enableTax && config.enableDiscount ? '(Price * Qty + Tax) - Discount' :
+                            config.enableTax ? 'Price * Qty + Tax' :
+                                config.enableDiscount ? 'Price * Qty - Discount' : ''}
                     </p>
                 )}
                 {/* Footer */}
