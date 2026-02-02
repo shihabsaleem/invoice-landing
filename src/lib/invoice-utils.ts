@@ -11,23 +11,23 @@ export function calculateTotals(data: InvoiceData) {
         const taxRate = data.config.enableTax ? (item.tax || 0) : 0;
         const discountRate = data.config.enableDiscount ? (item.discount || 0) : 0;
 
-        const itemBaseArgs = qty * price;
-        const itemTax = itemBaseArgs * (taxRate / 100);
-        const itemAmountWithTax = itemBaseArgs + itemTax; // amount = price + tax
+        const baseAmount = qty * price;
+        const discountAmount = baseAmount * (discountRate / 100);
+        const netAmount = baseAmount - discountAmount;
+        const taxAmount = netAmount * (taxRate / 100);
 
-        const itemDiscountAmount = itemAmountWithTax * (discountRate / 100);
-
-        subtotal += itemAmountWithTax;
-        totalTax += itemTax;
-        totalDiscount += itemDiscountAmount;
+        subtotal += baseAmount;
+        totalDiscount += discountAmount;
+        totalTax += taxAmount;
     });
 
-    // Grand Total is Subtotal (Tax Inclusive) minus Discount
-    const grandTotal = subtotal - totalDiscount;
+    const taxableAmount = subtotal - totalDiscount;
+    const grandTotal = taxableAmount + totalTax;
 
     return {
         subtotal,
         discountAmount: totalDiscount,
+        taxableAmount,
         totalTax,
         grandTotal,
     };

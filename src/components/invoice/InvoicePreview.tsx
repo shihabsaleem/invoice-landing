@@ -87,7 +87,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                                 {config.enableDiscount && <td className="text-right py-2 px-2">{item.discount || 0}%</td>}
                                 <td className="text-right py-2 px-2">
                                     {(
-                                        (item.qty * item.price) * (1 + (config.enableTax ? (item.tax || 0) / 100 : 0)) * (1 - (config.enableDiscount ? (item.discount || 0) / 100 : 0))
+                                        ((item.qty * item.price) * (1 - (config.enableDiscount ? (item.discount || 0) / 100 : 0))) * (1 + (config.enableTax ? (item.tax || 0) / 100 : 0))
                                     ).toFixed(2)}
                                 </td>
                             </tr>
@@ -108,10 +108,16 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                                 <span>- {details.currency}{totals.discountAmount.toFixed(2)}</span>
                             </div>
                         )}
+                        {config.enableTax && config.enableDiscount && (
+                            <div className="flex justify-between text-slate-600 font-medium">
+                                <span>Taxable Amount</span>
+                                <span>{details.currency}{totals.taxableAmount.toFixed(2)}</span>
+                            </div>
+                        )}
                         {config.enableTax && (
-                            <div className="flex justify-between text-slate-400 italic">
-                                <span>(Includes Tax)</span>
-                                <span>{details.currency}{totals.totalTax.toFixed(2)}</span>
+                            <div className="flex justify-between text-slate-400">
+                                <span>Tax</span>
+                                <span>+ {details.currency}{totals.totalTax.toFixed(2)}</span>
                             </div>
                         )}
                         <div className="flex justify-between font-bold text-[10px] border-t border-slate-200 pt-2" style={{ color: details.brandColor }}>
@@ -137,7 +143,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                 {(config.enableTax || config.enableDiscount) && (
                     <p className="text-[8px] text-slate-400 italic mt-2 pdf-item" style={{ pageBreakInside: 'avoid' }}>
                         * Amounts are calculated as: {' '}
-                        {config.enableTax && config.enableDiscount ? '(Price * Qty + Tax) - Discount' :
+                        {config.enableTax && config.enableDiscount ? '(Price * Qty - Discount) + Tax' :
                             config.enableTax ? 'Price * Qty + Tax' :
                                 config.enableDiscount ? 'Price * Qty - Discount' : ''}
                     </p>
