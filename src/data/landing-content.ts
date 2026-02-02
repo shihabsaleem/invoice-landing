@@ -15,7 +15,7 @@ export const landingPageData = {
     hero: {
         badgeText: "100% Free & Offline-First",
         title: "Professional Invoices <br /> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500'>Made Simple.</span>",
-        description: "The best Free Invoice Generator. Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required. Secure & Offline-first.",
+        description: "The best Free Invoice Generator. Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required. Secure & Offline-first. Available as a Web App & Chrome Extension.",
         primaryCta: {
             text: "Create Invoice Now",
             link: "/generator",
@@ -32,7 +32,7 @@ export const landingPageData = {
     features: {
         sectionTitle: "All the features you need",
         mainTitle: "Everything to get paid faster.",
-        description: "Powerful features packed into a lightweight browser extension. No bloat, just business.",
+        description: "Powerful features packed into a lightweight Web App and Chrome Extension. No bloat, just business.",
         items: [
             {
                 iconColorClass: "bg-blue-100 text-blue-600",
@@ -59,7 +59,7 @@ export const landingPageData = {
             {
                 name: "Adil Rafeeque.",
                 role: "Digital Marketer",
-                quote: "\"The best part is I don't need to login to some slow website. I just click the extension, fill it out, and boom—PDF ready in seconds.\"",
+                quote: "\"The best part is I don't need to login to some slow accounting software. I just use the tool, fill it out, and boom—PDF ready in seconds.\"",
                 authorLink: "https://adilrafeeque.com/"
             },
             {

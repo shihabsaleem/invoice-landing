@@ -15,6 +15,25 @@ export default function GeneratorLayout({
 }) {
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'WebApplication',
+                        name: 'Free Invoice Generator',
+                        url: 'https://invoice.shihabsaleem.site/generator',
+                        applicationCategory: 'BusinessApplication',
+                        operatingSystem: 'Any',
+                        offers: {
+                            '@type': 'Offer',
+                            price: '0',
+                            priceCurrency: 'USD',
+                        },
+                        featureList: 'PDF Export, Local Storage, No Sign-up, Offline Capable',
+                    }),
+                }}
+            />
             {children}
         </>
     );

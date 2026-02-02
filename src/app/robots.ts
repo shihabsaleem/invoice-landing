@@ -4,7 +4,7 @@ export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
             userAgent: '*',
-            allow: '/',
+            allow: ['/', '/generator'],
             disallow: '/private/',
         },
         sitemap: 'https://invoice.shihabsaleem.site/sitemap.xml',

@@ -19,13 +19,13 @@ export default function Footer() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Link
                         href={footer.ctaLink}
-                        className="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-brand-500/50"
+                        className="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-brand-500/50"
                     >
                         {footer.ctaText}
                     </Link>
                     <Link
                         href={footer.chromeCtaLink}
-                        className="px-8 py-4 border border-slate-700 hover:border-white hover:bg-white hover:text-slate-900 text-white rounded-full font-bold text-lg transition-all"
+                        className="px-8 py-4 border border-slate-700 hover:border-white hover:bg-white hover:text-slate-900 text-white rounded-full font-semibold text-lg transition-all"
                     >
                         {footer.chromeCtaText}
                     </Link>
