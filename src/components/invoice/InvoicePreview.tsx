@@ -83,7 +83,11 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                                 <td className="text-right py-2 px-2">{item.qty}</td>
                                 <td className="text-right py-2 px-2">{item.price.toFixed(2)}</td>
                                 {config.enableTax && <td className="text-right py-2 px-2">{item.tax}%</td>}
-                                <td className="text-right py-2 px-2">{((item.qty * item.price)).toFixed(2)}</td>
+                                <td className="text-right py-2 px-2">
+                                    {(
+                                        (item.qty * item.price) * (1 + (config.enableTax ? (item.tax || 0) / 100 : 0))
+                                    ).toFixed(2)}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -103,9 +107,9 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                             </div>
                         )}
                         {config.enableTax && (
-                            <div className="flex justify-between text-slate-600">
-                                <span>Tax</span>
-                                <span>+ {details.currency}{totals.totalTax.toFixed(2)}</span>
+                            <div className="flex justify-between text-slate-400 italic">
+                                <span>(Includes Tax)</span>
+                                <span>{details.currency}{totals.totalTax.toFixed(2)}</span>
                             </div>
                         )}
                         <div className="flex justify-between font-bold text-[10px] border-t border-slate-200 pt-2" style={{ color: details.brandColor }}>

@@ -23,6 +23,7 @@ const jsonLd = {
     url: 'https://invoice.shihabsaleem.site',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Any',
+    image: 'https://invoice.shihabsaleem.site/assets/invoice-cover.jpg',
     offers: {
         '@type': 'Offer',
         price: '0',
@@ -71,6 +72,7 @@ export const metadata: Metadata = {
                 width: 1200,
                 height: 630,
                 alt: 'Invoice by Jadbery',
+                type: 'image/jpeg',
             },
         ],
         locale: 'en_US',
