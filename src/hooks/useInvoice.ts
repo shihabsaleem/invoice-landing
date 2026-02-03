@@ -81,10 +81,19 @@ export function useInvoice() {
     };
 
     const resetInvoice = () => {
-        // Keep company info, reset rest
+        setData(DEFAULT_INVOICE);
+    };
+
+    const clearClient = () => {
         setData((prev) => ({
-            ...DEFAULT_INVOICE,
-            company: prev.company,
+            ...prev,
+            client: {
+                name: "",
+                email: "",
+                phone: "",
+                address: "",
+                tax: "",
+            }
         }));
     };
 
@@ -98,6 +107,7 @@ export function useInvoice() {
         removeItem,
         updateItem,
         resetInvoice,
+        clearClient,
         setFullData: setData
     };
 }

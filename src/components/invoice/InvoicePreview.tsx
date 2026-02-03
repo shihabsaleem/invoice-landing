@@ -47,8 +47,8 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding }: Pro
                         <h2 className="text-xl font-light uppercase tracking-widest mb-2" style={{ color: details.brandColor }}>{details.docType}</h2>
                         <div className="space-y-0.5 text-[9px]">
                             <p><span className="font-semibold text-slate-600">#:</span> {details.invoiceNumber}</p>
-                            <p><span className="font-semibold text-slate-600">Date:</span> {details.invoiceDate}</p>
-                            <p><span className="font-semibold text-slate-600">Due:</span> {details.dueDate}</p>
+                            <p><span className="font-semibold text-slate-600">Date:</span> {details.invoiceDate ? details.invoiceDate.split("-").reverse().join("-") : ""}</p>
+                            <p><span className="font-semibold text-slate-600">Due:</span> {details.dueDate ? details.dueDate.split("-").reverse().join("-") : ""}</p>
                         </div>
                     </div>
                 </div>

@@ -366,14 +366,14 @@ export default function GeneratorPage() {
             </div>
 
 
-            {/* Floating Download Button */}
             <button
                 onClick={handleDownload}
                 disabled={isGenerating}
-                className="fixed bottom-8 right-8 z-[100] flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-4 rounded-full font-bold shadow-xl shadow-brand-600/30 transition-all hover:scale-105 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                className="fixed bottom-8 right-8 z-[100] flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white p-4 md:px-6 md:py-4 rounded-full font-bold shadow-xl shadow-brand-600/30 transition-all hover:scale-105 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                aria-label={isGenerating ? "Generating PDF" : "Download PDF"}
             >
                 {isGenerating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
-                {isGenerating ? "Generating..." : "Download PDF"}
+                <span className="hidden md:inline">{isGenerating ? "Generating..." : "Download PDF"}</span>
             </button>
 
             <WishGreetingPopup
