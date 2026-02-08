@@ -263,7 +263,7 @@ export default function GeneratorPage() {
             heightLeft -= pageHeight;
 
             // 5. Add additional pages if content exceeds one page
-            while (heightLeft >= 1) { // 1mm tolerance to prevent empty pages from rounding errors
+            while (heightLeft >= 5) { // 5mm tolerance to prevent empty pages from rounding errors
                 position = heightLeft - imgHeight;
                 pdf.addPage();
                 pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
