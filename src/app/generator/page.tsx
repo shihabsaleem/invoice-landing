@@ -263,7 +263,7 @@ export default function GeneratorPage() {
             heightLeft -= pageHeight;
 
             // 5. Add additional pages if content exceeds one page
-            while (heightLeft > 0) {
+            while (heightLeft >= 1) { // 1mm tolerance to prevent empty pages from rounding errors
                 position = heightLeft - imgHeight;
                 pdf.addPage();
                 pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
@@ -335,7 +335,7 @@ export default function GeneratorPage() {
                     </div>
 
                     {/* Right: Preview (Visible on Desktop) */}
-                    <div ref={desktopPreviewContainerRef} className="hidden lg:flex bg-slate-200/50 rounded-2xl p-4 md:p-8 justify-center overflow-hidden sticky top-24">
+                    <div ref={desktopPreviewContainerRef} className="hidden lg:flex rounded-2xl justify-center overflow-hidden sticky top-24">
                         <div style={{ transform: `scale(${previewScale})`, transformOrigin: 'top center' }} className="transition-transform duration-200 ease-out">
                             {/* Display Only Preview */}
                             <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} />
