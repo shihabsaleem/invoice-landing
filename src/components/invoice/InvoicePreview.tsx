@@ -33,7 +33,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding, pdfMo
             <div className="flex justify-between items-start border-b pb-4 mb-4 pdf-item" style={{ borderBottomColor: "#eeeeee" }}>
                 <div className="space-y-2 max-w-[50%]">
                     {company.logo && (
-                        <img src={company.logo} alt="Logo" className="h-16 w-auto object-contain" />
+                        <img src={company.logo} alt="Logo" className="object-contain" style={{ maxWidth: "150px", maxHeight: "80px", width: "auto", height: "auto" }} />
                     )}
                     <div>
                         <h1 className="text-[11px] font-bold" style={{ color: details.brandColor }}>{company.name}</h1>
