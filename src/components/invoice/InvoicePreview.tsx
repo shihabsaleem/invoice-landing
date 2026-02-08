@@ -24,7 +24,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding, pdfMo
             className="bg-white w-[210mm] min-w-[210mm] shrink-0 p-[10mm] text-slate-900 box-border relative font-sans shadow-lg"
             style={{
                 fontSize: "9px",
-                minHeight: "297mm",
+                minHeight: pdfMode ? "297mm" : "auto",
                 pageBreakAfter: "auto"
             }}
         >
@@ -170,7 +170,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding, pdfMo
     }
 
     return (
-        <div className="bg-slate-100 p-8 rounded-xl overflow-auto h-full min-h-[600px] flex items-start justify-center">
+        <div className="bg-slate-100 p-8 rounded-xl overflow-auto flex items-start justify-center">
             {InvoiceContent}
         </div>
     );
