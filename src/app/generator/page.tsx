@@ -309,15 +309,7 @@ export default function GeneratorPage() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        {/* {!isAdWatched && (
-                        <button
-                            onClick={handleWatchAd}
-                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-lg hover:from-amber-600 hover:to-amber-700 transition-all font-medium text-sm shadow-sm"
-                        >
-                            <span className="text-xs bg-white/20 px-1.5 py-0.5 rounded uppercase tracking-wider font-bold">Ad</span>
-                            Remove Logo
-                        </button>
-                    )} */}
+
                         <button
                             onClick={handleShare}
                             className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm"
@@ -354,7 +346,7 @@ export default function GeneratorPage() {
                 {/* Hidden Preview for PDF Generation (Always rendered as A4) */}
                 <div className="fixed top-0 left-0 pointer-events-none opacity-0 -z-50 w-[210mm] overflow-hidden">
                     <div ref={invoiceRef}>
-                        <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} />
+                        <InvoicePreview data={data} invoiceRef={{ current: null }} removeBranding={isAdWatched} pdfMode={true} />
                     </div>
                 </div>
 
