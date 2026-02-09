@@ -21,7 +21,7 @@ export default function HowItWorks() {
 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Data Flow Line (Background) */}
-                    <div className="hidden md:block absolute top-[2.5rem] left-[10%] right-[10%] h-1 bg-slate-100 rounded-full overflow-hidden z-0">
+                    <div className="hidden md:block absolute top-[2.5rem] left-[15%] right-[15%] h-1 bg-slate-100 rounded-full overflow-hidden z-0">
                         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-brand-600/20 via-blue-500/20 to-green-500/20"></div>
                         <div className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-50 blur-sm animate-flow"></div>
                     </div>
