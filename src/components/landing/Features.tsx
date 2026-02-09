@@ -1,10 +1,13 @@
 import { landingPageData } from '@/data/landing-content';
-import { Palette, FileText, Shield } from 'lucide-react';
+import { Palette, FileText, Shield, Zap, Globe, Download } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
     Palette,
     FileText,
-    Shield
+    Shield,
+    Zap,
+    Globe,
+    Download
 };
 
 export default function Features() {
@@ -25,16 +28,16 @@ export default function Features() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.items.map((item) => {
                         const Icon = iconMap[item.iconName] || FileText;
 
                         return (
                             <div
                                 key={item.title}
-                                className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                                className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-white group"
                             >
-                                <div className={`w-12 h-12 ${item.iconColorClass} rounded-2xl flex items-center justify-center mb-6`}>
+                                <div className={`w-12 h-12 ${item.iconColorClass} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                                     <Icon className="w-6 h-6" />
                                 </div>
                                 <h4 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h4>

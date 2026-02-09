@@ -90,11 +90,25 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes flow {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(300%);
+    }
+  }
 }
 
 /* Utilities for animation delays */
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+
+.animate-flow {
+  animation: flow 3s linear infinite;
 }
 
 .animation-delay-4000 {

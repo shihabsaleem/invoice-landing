@@ -5,7 +5,8 @@ export const landingPageData = {
         links: [
             { text: "Features", href: "#features" },
             { text: "How it Works", href: "#how-it-works" },
-            { text: "Testimonials", href: "#testimonials" }
+            { text: "Testimonials", href: "#testimonials" },
+            { text: "FAQ", href: "#faq" }
         ],
         ctaText: "Create Invoice Now",
         ctaLink: "/generator",
@@ -15,7 +16,7 @@ export const landingPageData = {
     hero: {
         badgeText: "100% Free & Offline-First",
         title: "Professional Invoices <br /> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500'>Made Simple.</span>",
-        description: "The best Free Invoice Generator. Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required. Secure & Offline-first. Available as a Web App & Chrome Extension.",
+        description: "Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required. Secure & Offline-first.",
         primaryCta: {
             text: "Create Invoice Now",
             link: "/generator",
@@ -51,10 +52,52 @@ export const landingPageData = {
                 iconName: "Shield",
                 title: "Privacy First",
                 description: "No servers. No tracking. All your client data and invoice history is stored securely on your own device."
+            },
+            {
+                iconColorClass: "bg-orange-100 text-orange-600",
+                iconName: "Zap",
+                title: "Lightning Fast",
+                description: "Built for speed. Generate PDFs instantly without page reloads or waiting times."
+            },
+            {
+                iconColorClass: "bg-red-100 text-red-600",
+                iconName: "Globe",
+                title: "Works Offline",
+                description: "No internet? No problem. Our Progressive Web App (PWA) works seamlessly even when you're offline."
+            },
+            {
+                iconColorClass: "bg-teal-100 text-teal-600",
+                iconName: "Download",
+                title: "One-Click PDF",
+                description: "Download professional PDFs with a single click. Ready to email or print immediately."
+            }
+        ]
+    },
+    howItWorks: {
+        sectionTitle: "Simple Workflow",
+        mainTitle: "Create an invoice in 3 steps",
+        steps: [
+            {
+                title: "Fill Details",
+                description: "Enter your business info, client details, and line items.",
+                icon: "PenTool"
+            },
+            {
+                title: "Customize",
+                description: "Add your logo, pick brand colors, and choose a template.",
+                icon: "Settings"
+            },
+            {
+                title: "Download",
+                description: "Get your professional PDF invoice instantly.",
+                icon: "Download"
             }
         ]
     },
     testimonials: {
+        sectionTitle: "Testimonials",
+        mainTitle: "Loved by freelancers.",
+        description: "Join thousands of professionals who trust us with their billing.",
         items: [
             {
                 name: "Adil Rafeeque.",
@@ -63,9 +106,15 @@ export const landingPageData = {
                 authorLink: "https://adilrafeeque.com/"
             },
             {
-                name: "Mike R.",
-                role: "Consultant",
-                quote: "\"Finally, an invoice tool that doesn't try to upsell me. Clean, fast, and the branding options are perfect.\"",
+                name: "Akshay Das.",
+                role: "SDE @TCS",
+                quote: "\"If you are a freelancer or a small business owner who dreads the admin hour, Invoice by jadbery is a breath of fresh air.\"",
+                authorLink: "https://akshaydas.online/"
+            },
+            {
+                name: "Anupam Singh.",
+                role: "Co-Founder @Digia",
+                quote: "\"This feels refreshingly simple and honest, no signup, no tracking, just a clean way for freelancers to make good-looking invoices and stay in control of their data.\"",
                 authorLink: "#"
             }
         ],
@@ -76,8 +125,37 @@ export const landingPageData = {
             buttonLink: "/generator"
         }
     },
+    faq: {
+        sectionTitle: "FAQ",
+        mainTitle: "Frequently Asked Questions",
+        items: [
+            {
+                question: "Is this really free?",
+                answer: "Yes, 100% free. There are no hidden fees, no subscriptions, and no limits on the number of invoices you can create."
+            },
+            {
+                question: "Is my data safe?",
+                answer: "Absolutely. We use local storage technology, meaning your data never leaves your device. We don't have servers to store your invoices."
+            },
+            {
+                question: "Can I add my logo?",
+                answer: "Yes! You can upload your company logo and it will appear on all your invoices. You can also customize the primary color to match your brand."
+            },
+            {
+                question: "Do I need to sign up?",
+                answer: "No. You can start creating invoices immediately without creating an account."
+            }
+        ]
+    },
+    cta: {
+        title: "Ready to get paid faster?",
+        description: "Join thousands of freelancers and small businesses managing their invoicing for free.",
+        buttonText: "Create Invoice Now",
+        secondaryButtonText: "Get Chrome Extension",
+        secondaryButtonLink: "https://chromewebstore.google.com/detail/invoice-by-jadbery/fcdjehhdacfdkflfjapeoagfddedjgaj"
+    },
     footer: {
-        title: "Ready to look professional?",
+        title: "Simple. Secure. Free.",
         logo: "/assets/logo.svg",
         ctaText: "Create Invoice Now",
         ctaLink: "/generator",

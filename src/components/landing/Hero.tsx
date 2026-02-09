@@ -1,3 +1,5 @@
+"use client";
+
 import { landingPageData } from '@/data/landing-content';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -6,11 +8,13 @@ export default function Hero() {
     const { hero } = landingPageData;
 
     return (
-        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-brand-50 to-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-indigo-50 via-white to-brand-50 overflow-hidden relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center max-w-4xl mx-auto relative z-10">
                     <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm animate-fade-in-up">
-                        <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
+                        <span className="flex h-2 w-2 rounded-full bg-green-500 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        </span>
                         <span className="text-slate-600 text-sm font-medium">{hero.badgeText}</span>
                     </div>
 
@@ -26,7 +30,7 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link
                             href={hero.primaryCta.link}
-                            className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-semibold transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 group"
+                            className="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-semibold transition-all shadow-xl hover:shadow-2xl hover:shadow-brand-500/30 flex items-center justify-center gap-2 group"
                         >
                             {/* Rendering path from data if needed, or using Lucide Icon if mapped */}
                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -36,8 +40,9 @@ export default function Hero() {
                         </Link>
                         <Link
                             href={hero.secondaryCta.link}
-                            className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:border-slate-300 rounded-full font-semibold transition-all shadow-sm hover:shadow-md"
+                            className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:border-slate-300 rounded-full font-semibold transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
                         >
+                            <img src="/assets/chrome.svg" alt="Chrome" className="w-5 h-5" onError={(e) => e.currentTarget.style.display = 'none'} />
                             {hero.secondaryCta.text}
                         </Link>
                     </div>
@@ -45,18 +50,18 @@ export default function Hero() {
 
                 {/* Abstract background elements */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none opacity-40">
-                    <div className="absolute top-10 left-10 w-72 h-72 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-                    <div className="absolute top-10 right-10 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-                    <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+                    <div className="absolute top-10 left-10 w-72 h-72 bg-brand-100/60 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+                    <div className="absolute top-10 right-10 w-72 h-72 bg-purple-100/60 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+                    <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-100/60 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
                 </div>
             </div>
 
             {/* Preview Image Section */}
             <div className="max-w-6xl mx-auto px-4 relative z-20 mt-12 md:mt-20">
                 {/* Glow Effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-brand-500/10 blur-3xl rounded-full -z-10 pointer-events-none"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-brand-500/5 blur-3xl rounded-full -z-10 pointer-events-none"></div>
 
-                <div className="relative rounded-2xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl ring-1 ring-white/40 overflow-hidden">
+                <div className="relative rounded-2xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl ring-1 ring-black/5 overflow-hidden transform hover:scale-[1.01] transition-transform duration-700 ease-out">
                     {/* Window Header */}
                     <div className="flex items-center gap-2 px-4 py-3 bg-white/50 border-b border-slate-100">
                         <div className="flex gap-2">
@@ -64,13 +69,13 @@ export default function Hero() {
                             <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]"></div>
                             <div className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29]"></div>
                         </div>
-                        <div className="ml-4 flex-1 max-w-2xl bg-slate-100/50 h-6 rounded-md border border-slate-200/50 flex items-center px-3">
-                            <span className="text-xs text-slate-400">{hero.previewDomain}</span>
+                        <div className="ml-4 flex-1 max-w-2xl bg-slate-100/50 h-6 rounded-md border border-slate-200/50 flex items-center px-3 justify-center">
+                            <span className="text-xs text-slate-400 font-mono">{hero.previewDomain}</span>
                         </div>
                     </div>
 
                     {/* Window Content */}
-                    <div className="rounded-b-xl overflow-hidden relative group">
+                    <div className="rounded-b-xl overflow-hidden relative group bg-slate-50">
                         <img src={hero.previewImage} alt="Extension Interface" className="w-full h-auto block" />
 
                         {/* Floating Badge */}
