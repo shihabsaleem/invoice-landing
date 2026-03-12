@@ -39,7 +39,7 @@ const jsonLd = {
 export const metadata: Metadata = {
     metadataBase: new URL('https://invoice.shihabsaleem.site'),
     title: {
-        default: "Invoice by Jadbery - Professional Invoice Generator",
+        default: "Invoice by Jadbery - Free Invoice Generator",
         template: "%s | Invoice by Jadbery"
     },
     description: "Create beautiful, branded invoices, estimates, and quotes directly from your browser. No sign-up required. Free online invoice generator.",
@@ -59,10 +59,10 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: '/',
+        canonical: 'https://invoice.shihabsaleem.site',
     },
     openGraph: {
-        title: "Invoice by Jadbery - Professional Invoice Generator",
+        title: "Invoice by Jadbery - Free Invoice Generator",
         description: "Create beautiful, branded invoices, estimates, and quotes directly from your browser. Free & Secure.",
         url: 'https://invoice.shihabsaleem.site',
         siteName: 'Invoice by Jadbery',

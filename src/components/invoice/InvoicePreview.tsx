@@ -36,7 +36,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding, pdfMo
                         <img src={company.logo} alt="Logo" className="object-contain" style={{ maxWidth: "150px", maxHeight: "80px", width: "auto", height: "auto" }} />
                     )}
                     <div>
-                        <h1 className="text-[11px] font-bold" style={{ color: details.brandColor }}>{company.name}</h1>
+                        <h2 className="text-[11px] font-bold" style={{ color: details.brandColor }}>{company.name}</h2>
                         <p className="whitespace-pre-wrap text-slate-500 text-[9px] mt-1">{company.address}</p>
                         {company.tax && <p className="text-slate-500 text-[9px] mt-0.5">Tax ID: {company.tax}</p>}
                         {company.email && <p className="text-slate-500 text-[9px]">Email: {company.email}</p>}
