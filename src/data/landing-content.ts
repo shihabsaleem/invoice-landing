@@ -1,7 +1,7 @@
 export const landingPageData = {
     navbar: {
         logo: "/assets/icon.svg",
-        brandName: "Invoice by jadbery",
+        brandName: "Invoice",
         links: [
             { text: "Features", href: "#features" },
             { text: "How it Works", href: "#how-it-works" },
@@ -108,7 +108,7 @@ export const landingPageData = {
             {
                 name: "Akshay Das.",
                 role: "SDE @TCS",
-                quote: "\"If you are a freelancer or a small business owner who dreads the admin hour, Invoice by jadbery is a breath of fresh air.\"",
+                quote: "\"If you are a freelancer or a small business owner who dreads the admin hour, Invoice is a breath of fresh air.\"",
                 authorLink: "https://akshaydas.online/"
             },
             {
@@ -161,18 +161,18 @@ export const landingPageData = {
         ctaLink: "/generator",
         chromeCtaText: "Chrome Extension",
         chromeCtaLink: "https://chromewebstore.google.com/detail/invoice-by-jadbery/fcdjehhdacfdkflfjapeoagfddedjgaj",
-        copyright: "© 2026 Invoice by jadbery. All rights reserved.",
+        copyright: "© 2026 Invoice . All rights reserved.",
         links: [
             { text: "Privacy Policy", href: "/privacy" },
             { text: "Terms of Service", href: "/terms" },
-            { text: "Support", href: "mailto:support@jadbery.com" },
+            { text: "Support", href: "mailto:info@jadbery.com" },
             { text: "Dev", href: "https://shihabsaleem.site" },
             { text: "jadbery", href: "https://jadbery.com" },
         ]
     },
     privacyPolicy: {
         effectiveDate: "January 29, 2026",
-        contactEmail: "support@jadbery.com",
+        contactEmail: "info@jadbery.com",
         sections: [
             {
                 title: "1. Information We Collect",
@@ -188,11 +188,11 @@ export const landingPageData = {
             },
             {
                 title: "4. Third-Party Services",
-                content: "We use <strong>Google Analytics 4</strong> and <strong>Microsoft Clarity</strong> on our <strong>Website</strong> to understand anonymous traffic, usage patterns, and user interactions (via heatmaps and session replays). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. <br /><br /><strong>Note for Chrome Extension Users:</strong> The Invoice by Jadbery Chrome Extension does <strong>NOT</strong> use Microsoft Clarity or any session recording tools. It operates with strict privacy, storing data locally."
+                content: "We use <strong>Google Analytics 4</strong> and <strong>Microsoft Clarity</strong> on our <strong>Website</strong> to understand anonymous traffic, usage patterns, and user interactions (via heatmaps and session replays). This helps us improve the user experience. You can opt-out of cookie tracking via the banner on our site. <br /><br /><strong>Note for Chrome Extension Users:</strong> The Invoice Chrome Extension does <strong>NOT</strong> use Microsoft Clarity or any session recording tools. It operates with strict privacy, storing data locally."
             },
             {
                 title: "5. Contact Us",
-                content: "If you have any questions about this Privacy Policy, please contact us at support@jadbery.com."
+                content: "If you have any questions about this Privacy Policy, please contact us at info@jadbery.com."
             }
         ]
     },
@@ -201,7 +201,7 @@ export const landingPageData = {
         sections: [
             {
                 title: "1. Acceptance of Terms",
-                content: "By accessing or using the Invoice by Jadbery website and generator, you agree to be bound by these Terms of Service."
+                content: "By accessing or using the Invoice website and generator, you agree to be bound by these Terms of Service."
             },
             {
                 title: "2. Content Ownership",
@@ -209,15 +209,15 @@ export const landingPageData = {
             },
             {
                 title: "3. Use License",
-                content: "Permission is granted to use the Invoice by Jadbery software for personal or commercial document generation."
+                content: "Permission is granted to use the Invoice software for personal or commercial document generation."
             },
             {
                 title: "4. Disclaimer",
-                content: "The materials on Invoice by Jadbery's website are provided on an 'as is' basis. We make no warranties, expressed or implied, regarding the reliability or availability of the service."
+                content: "The materials on Invoice's website are provided on an 'as is' basis. We make no warranties, expressed or implied, regarding the reliability or availability of the service."
             },
             {
                 title: "5. Limitations",
-                content: "In no event shall Invoice by Jadbery be liable for any damages (including, without limitation, damages for loss of data or profit) arising out of the use or inability to use the materials on our website."
+                content: "In no event shall Invoice be liable for any damages (including, without limitation, damages for loss of data or profit) arising out of the use or inability to use the materials on our website."
             },
             {
                 title: "6. Governing Law",

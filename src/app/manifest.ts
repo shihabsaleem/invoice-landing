@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Invoice by Jadbery',
+        name: 'Invoice',
         short_name: 'Invoice App',
         description: 'Professional Invoice Generator for Freelancers and Small Businesses',
         start_url: '/',

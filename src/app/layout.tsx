@@ -18,7 +18,7 @@ const quicksand = Quicksand({
 const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Invoice by Jadbery',
+    name: 'Invoice',
     description: 'Create beautiful, branded invoices, estimates, and quotes directly from your browser.',
     url: 'https://invoice.shihabsaleem.site',
     applicationCategory: 'BusinessApplication',
@@ -39,8 +39,8 @@ const jsonLd = {
 export const metadata: Metadata = {
     metadataBase: new URL('https://invoice.shihabsaleem.site'),
     title: {
-        default: "Invoice by Jadbery - Free Invoice Generator",
-        template: "%s | Invoice by Jadbery"
+        default: "Invoice - Free Invoice Generator",
+        template: "%s | Invoice"
     },
     description: "Create beautiful, branded invoices, estimates, and quotes directly from your browser. No sign-up required. Free online invoice generator.",
     keywords: ["invoice generator", "free invoice maker", "online invoice", "estimate generator", "invoice template", "billing software"],
@@ -62,16 +62,16 @@ export const metadata: Metadata = {
         canonical: 'https://invoice.shihabsaleem.site',
     },
     openGraph: {
-        title: "Invoice by Jadbery - Free Invoice Generator",
+        title: "Invoice - Free Invoice Generator",
         description: "Create beautiful, branded invoices, estimates, and quotes directly from your browser. Free & Secure.",
         url: 'https://invoice.shihabsaleem.site',
-        siteName: 'Invoice by Jadbery',
+        siteName: 'Invoice',
         images: [
             {
                 url: '/assets/invoice-cover.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Invoice by Jadbery',
+                alt: 'Invoice',
                 type: 'image/jpeg',
             },
         ],
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: "Invoice by Jadbery",
+        title: "Invoice",
         description: "Professional Invoice Generator for Freelancers and Small Businesses.",
         creator: '@jadbery',
         images: ['/assets/invoice-cover.jpg'],

@@ -1,4 +1,4 @@
-# Invoice by Jadbery
+# Invoice
 
 A professional, offline-first invoice generator built with Next.js. Create beautiful, branded PDF invoices and estimates directly from your browser. No sign-up required.
 
@@ -41,4 +41,4 @@ We operate on a "Privacy First" principle. We do not collect any personal data. 
 ## License
 
 This project is proprietary software.
-© 2026 Invoice by jadbery. All rights reserved.
+© 2026 Invoice. All rights reserved.
