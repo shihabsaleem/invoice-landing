@@ -8,6 +8,7 @@ export default function Navbar() {
     const { navbar } = landingPageData;
     const pathname = usePathname();
     const isGeneratorPage = pathname === '/generator';
+    const isHomePage = pathname === '/';
 
     return (
         <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
@@ -28,7 +29,7 @@ export default function Navbar() {
                             {navbar.links.map((link) => (
                                 <Link
                                     key={link.text}
-                                    href={link.href}
+                                    href={isHomePage ? link.href : `/${link.href}`}
                                     className="text-slate-600 hover:text-brand-600 transition-colors"
                                 >
                                     {link.text}
