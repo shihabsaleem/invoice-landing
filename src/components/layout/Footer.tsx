@@ -7,12 +7,7 @@ export default function Footer() {
     return (
         <footer className="bg-slate-900 text-white py-20">
             <div className="max-w-4xl mx-auto px-4 text-center">
-                {/* Footer Logo */}
-                <div className="flex justify-center mb-12">
-                    <div className="bg-white px-6 py-3 rounded-2xl shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
-                        <img src={footer.logo} alt="Logo" className="h-8 md:h-10" />
-                    </div>
-                </div>
+                {/* Footer Logo Removed */}
 
                 <h2 className="text-3xl md:text-5xl font-bold mb-8">{footer.title}</h2>
 
