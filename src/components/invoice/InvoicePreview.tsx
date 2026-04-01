@@ -155,12 +155,7 @@ export default function InvoicePreview({ data, invoiceRef, removeBranding, pdfMo
                 style={{ pageBreakInside: 'avoid' }}
             >
                 <p className="text-slate-500 font-medium mb-1">Thank you for your business!</p>
-                {!removeBranding && (
-                    <>
-                        <p className="text-slate-400 text-[6px] uppercase tracking-wider">Generated with</p>
-                        <img src="/assets/logo-jadbery.png" alt="Jadbery Logo" className="h-6 opacity-80" />
-                    </>
-                )}
+
             </div>
         </div>
     );
