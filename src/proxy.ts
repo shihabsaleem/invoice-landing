@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const protocol = request.headers.get('x-forwarded-proto');
   
   // If the request is over HTTP and we're not in development, redirect to HTTPS
