@@ -1,18 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, BellRing, CheckCircle2, ArrowRight } from "lucide-react";
+import { X, BellRing, CheckCircle2, ArrowRight, Check } from "lucide-react";
 import { createPortal } from "react-dom";
 
 export default function UpdatePopup() {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [dontShowAgain, setDontShowAgain] = useState(false);
 
     useEffect(() => {
         setMounted(true);
         const timer = setTimeout(() => {
             const hasSeenUpdate = localStorage.getItem("hasSeenLogoUpdate_v2");
-            if (!hasSeenUpdate) {
+            const hasSeenSession = sessionStorage.getItem("hasSeenLogoUpdate_v2");
+            if (!hasSeenUpdate && !hasSeenSession) {
                 setIsOpen(true);
             }
         }, 1500);
@@ -22,7 +24,11 @@ export default function UpdatePopup() {
 
     const handleClose = () => {
         setIsOpen(false);
-        localStorage.setItem("hasSeenLogoUpdate_v2", "true");
+        if (dontShowAgain) {
+            localStorage.setItem("hasSeenLogoUpdate_v2", "true");
+        } else {
+            sessionStorage.setItem("hasSeenLogoUpdate_v2", "true");
+        }
     };
 
     if (!mounted || !isOpen) return null;
@@ -74,6 +80,24 @@ export default function UpdatePopup() {
                             {/* Shiny effect */}
                             <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                         </button>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-center">
+                        <label className="flex items-center gap-3 cursor-pointer group">
+                            <div className="relative flex items-center">
+                                <input 
+                                    type="checkbox" 
+                                    checked={dontShowAgain}
+                                    onChange={(e) => setDontShowAgain(e.target.checked)}
+                                    className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 rounded border-[1.5px] border-slate-300 bg-white transition-all duration-200 peer-checked:border-slate-900 peer-checked:bg-slate-900 group-hover:border-slate-400" />
+                                <Check className="w-3.5 h-3.5 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 opacity-0 peer-checked:scale-100 peer-checked:opacity-100 transition-all duration-200 pointer-events-none stroke-[3]" />
+                            </div>
+                            <span className="text-sm text-slate-500 font-medium select-none group-hover:text-slate-800 transition-colors">
+                                Don't show this again
+                            </span>
+                        </label>
                     </div>
 
                     <p className="mt-6 text-sm text-slate-400">
